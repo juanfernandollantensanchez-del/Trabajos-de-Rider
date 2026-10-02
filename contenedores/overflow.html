@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Overflow separado correctamente</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    gap: 30px;
+    padding: 30px;
+}
+
+/* CONTENEDOR GENERAL */
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 👈 SEPARACIÓN REAL ENTRE IMAGEN Y TEXTO */
+}
+
+/* CAJAS */
+.img-box, .text-box{
+    width: 260px;
+    height: 120px;
+    border: 2px solid black;
+    padding: 8px;
+}
+
+/* IMAGEN GRANDE */
+.img-box img{
+    width: 350px;
+}
+
+/* TEXTO LARGO */
+.text-box{
+    font-size: 13px;
+}
+
+/* =========================
+   OVERFLOW
+========================= */
+
+/* VISIBLE */
+.visible .img-box,
+.visible .text-box{
+    overflow: visible;
+    background: #e6f7ff;
+}
+
+/* HIDDEN */
+.hidden .img-box,
+.hidden .text-box{
+    overflow: hidden;
+    background: #ffe6e6;
+}
+
+/* SCROLL */
+.scroll .img-box,
+.scroll .text-box{
+    overflow: scroll;
+    background: #fff7cc;
+}
+
+/* AUTO */
+.auto .img-box,
+.auto .text-box{
+    overflow: auto;
+    background: #e6ffe6;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VISIBLE -->
+<div class="card visible">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+    </div>
+    <div class="text-box">
+        Texto de ejemplo para overflow visible. El contenido puede salirse del cuadro.
+    </div>
+</div>
+
+<!-- HIDDEN -->
+<div class="card hidden">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+    </div>
+    <div class="text-box">
+        Texto de ejemplo para hidden. Todo lo que se salga se oculta.
+    </div>
+</div>
+
+<!-- SCROLL -->
+<div class="card scroll">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+    </div>
+    <div class="text-box">
+        Texto de ejemplo para scroll. Aparecen barras siempre.
+    </div>
+</div>
+
+<!-- AUTO -->
+<div class="card auto">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+    </div>
+    <div class="text-box">
+        Texto de ejemplo para auto. Solo aparece scroll si es necesario.
+    </div>
+</div>
+
+</body>
+</html>

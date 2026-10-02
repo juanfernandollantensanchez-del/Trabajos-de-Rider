@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empleate - Encuentra tu trabajo ideal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* ==========================================================
+       VARIABLES Y PALETA DE COLORES PASTEL / AZUL CLARO
+       ========================================================== */
+    :root {
+      --bg-main: #F4F8FC;
+      --bg-card: #FFFFFF;
+      --pastel-blue-light: #EBF3FA;
+      --pastel-blue-soft: #D5E8F7;
+      --pastel-blue-accent: #93C5FD;
+      --primary-blue: #3B82F6;
+      --primary-hover: #2563EB;
+      --text-dark: #0F172A;
+      --text-medium: #475569;
+      --text-muted: #64748B;
+      --border-light: #E2E8F0;
+      --success-green: #10B981;
+      --shadow-soft: 0 10px 30px rgba(59, 130, 246, 0.08);
+      --shadow-hover: 0 18px 40px rgba(59, 130, 246, 0.15);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 8%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-menu { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-menu a { text-decoration: none; color: var(--text-medium); font-weight: 600; transition: color 0.3s; }
+    .nav-menu a:hover { color: var(--primary-blue); }
+    .nav-actions { display: flex; gap: 1rem; }
+
+    /* Botones */
+    .btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn-outline { background-color: transparent; color: var(--primary-blue); border: 1.5px solid var(--pastel-blue-accent); }
+    .btn-outline:hover { background-color: var(--pastel-blue-light); border-color: var(--primary-blue); }
+    .btn-primary { background-color: var(--primary-blue); color: #FFFFFF; }
+    .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
+
+    /* Encabezados de sección universales */
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3rem auto;
+    }
+    .section-badge {
+      display: inline-block;
+      background-color: var(--pastel-blue-light);
+      color: var(--primary-blue);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.5px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      padding: 4rem 8% 5rem 8%;
+      gap: 3rem;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-main) 100%);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--pastel-blue-light);
+      color: var(--primary-blue);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title { font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; letter-spacing: -1px; }
+    .hero-title span { color: var(--primary-blue); }
+    .hero-description { font-size: 1.15rem; color: var(--text-medium); margin-bottom: 2rem; max-width: 540px; }
+
+    /* Tarjeta de Registro */
+    .hero-form-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-hover);
+      border: 2px solid var(--pastel-blue-soft);
+    }
+    .form-header { text-align: center; margin-bottom: 1.5rem; }
+    .form-header h3 { font-size: 1.4rem; font-weight: 700; }
+    .form-header p { font-size: 0.9rem; color: var(--text-muted); }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-medium); margin-bottom: 0.4rem; }
+    .form-control { width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none; transition: border 0.3s; background-color: var(--bg-main); }
+    .form-control:focus { border-color: var(--primary-blue); background-color: #FFFFFF; }
+
+    /* ==========================================================
+       SECCIÓN DE CATEGORÍAS
+       ========================================================== */
+    .categories-section {
+      padding: 4rem 8%;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .category-card {
+      background: var(--bg-card);
+      padding: 1.8rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--pastel-blue-accent);
+    }
+
+    .category-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: var(--radius-sm);
+      background: var(--pastel-blue-light);
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      transition: background 0.3s;
+    }
+
+    .category-card:hover .category-icon {
+      background: var(--primary-blue);
+      color: white;
+    }
+
+    .category-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .category-count {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* ==========================================================
+       SECCIÓN DE EMPLEOS DESTACADOS
+       ========================================================== */
+    .jobs-section {
+      padding: 4rem 8%;
+      background: #FFFFFF;
+    }
+
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .job-card {
+      background: var(--bg-main);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      border: 1.5px solid var(--border-light);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .job-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+      border-color: var(--pastel-blue-accent);
+      background: #FFFFFF;
+    }
+
+    .job-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .company-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: white;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .job-info h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .job-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .job-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      background: var(--pastel-blue-light);
+      color: var(--primary-blue);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tag-green {
+      background: #E6F4EA;
+      color: var(--success-green);
+    }
+
+    .job-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .job-salary {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .job-salary span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Modal / Popup */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-box {
+      background: #FFFFFF; width: 90%; max-width: 480px; border-radius: var(--radius-lg);
+      padding: 2.5rem; position: relative; transform: translateY(20px); transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal-box { transform: translateY(0); }
+    .modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--bg-main); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; }
+    
+    .modal-tabs { display: flex; background: var(--pastel-blue-light); padding: 4px; border-radius: var(--radius-sm); margin-bottom: 1.8rem; }
+    .tab-btn { flex: 1; padding: 0.6rem; border: none; background: transparent; font-weight: 700; color: var(--text-muted); cursor: pointer; border-radius: var(--radius-sm); transition: all 0.2s; }
+    .tab-btn.active { background: #FFFFFF; color: var(--primary-blue); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed; bottom: 20px; right: 20px; background: #10B981; color: white; padding: 1rem 1.5rem;
+      border-radius: var(--radius-sm); display: flex; align-items: center; gap: 10px; font-weight: 600;
+      transform: translateY(100px); opacity: 0; transition: all 0.4s ease; z-index: 3000;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ==========================================================
+       ESTILOS DEL ASISTENTE IA (CHAT)
+       ========================================================== */
+    .ai-chat-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, var(--primary-blue), #60A5FA);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ai-chat-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .ai-chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 25px;
+      width: 350px;
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .ai-chat-window.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .chat-header {
+      background: var(--primary-blue);
+      color: white;
+      padding: 1rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header button {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .chat-messages {
+      height: 300px;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--bg-main);
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 0.8rem 1rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .ai-message {
+      background: white;
+      color: var(--text-dark);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .user-message {
+      background: var(--pastel-blue-light);
+      color: var(--primary-blue);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-input-area {
+      display: flex;
+      padding: 1rem;
+      background: white;
+      border-top: 1px solid var(--border-light);
+      align-items: center;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      border: 1px solid var(--border-light);
+      padding: 0.7rem 1rem;
+      border-radius: 20px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .chat-input-area input:focus {
+      border-color: var(--primary-blue);
+    }
+
+    .chat-input-area button {
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-input-area button:hover {
+      background: var(--primary-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="logo"><i class="fa-solid fa-briefcase"></i> Empleate</a>
+    <ul class="nav-menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#categorias">Categorías</a></li>
+      <li><a href="#empleos">Empleos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn btn-outline" onclick="openModal('login')">Iniciar Sesión</button>
+      <button class="btn btn-primary" onclick="openModal('register')">Registrarse</button>
+    </div>
+  </nav>
+
+  <section class="hero" id="inicio">
+    <div class="hero-left">
+      <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> La plataforma #1 de Empleo Joven</div>
+      <h1 class="hero-title">Encuentra el trabajo que <span>realmente deseas</span></h1>
+      <p class="hero-description">Conectamos tu talento con las empresas líderes. Filtra miles de vacantes, postúlate en un clic y dale un impulso a tu carrera profesional.</p>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-form-card">
+        <div class="form-header">
+          <h3>Únete a Empleate hoy</h3>
+          <p>Crea tu cuenta gratuita en menos de 1 minuto</p>
+        </div>
+        <form onsubmit="handleRegistration(event)">
+          <div class="form-group">
+            <label>Nombre Completo</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.5rem; padding: 0.9rem;">
+            Crear Mi Cuenta Gratis <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories-section" id="categorias">
+    <div class="section-header">
+      <span class="section-badge">Explora por Áreas</span>
+      <h2 class="section-title">Categorías Populares</h2>
+      <p class="section-subtitle">Encuentra oportunidades adaptadas a tus fortalezas y especialidad laboral.</p>
+    </div>
+
+    <div class="categories-grid">
+      <a href="#empleos" class="category-card">
+        <div class="category-icon"><i class="fa-solid fa-code"></i></div>
+        <div>
+          <h3 class="category-title">Desarrollo & Tec</h3>
+          <p class="category-count">140+ vacantes</p>
+        </div>
+      </a>
+
+      <a href="#empleos" class="category-card">
+        <div class="category-icon"><i class="fa-solid fa-pen-nib"></i></div>
+        <div>
+          <h3 class="category-title">Diseño & Creatividad</h3>
+          <p class="category-count">85+ vacantes</p>
+        </div>
+      </a>
+
+      <a href="#empleos" class="category-card">
+        <div class="category-icon"><i class="fa-solid fa-bullhorn"></i></div>
+        <div>
+          <h3 class="category-title">Marketing Digital</h3>
+          <p class="category-count">110+ vacantes</p>
+        </div>
+      </a>
+
+      <a href="#empleos" class="category-card">
+        <div class="category-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <div>
+          <h3 class="category-title">Ventas & Negocios</h3>
+          <p class="category-count">95+ vacantes</p>
+        </div>
+      </a>
+
+      <a href="#empleos" class="category-card">
+        <div class="category-icon"><i class="fa-solid fa-headset"></i></div>
+        <div>
+          <h3 class="category-title">Atención al Cliente</h3>
+          <p class="category-count">60+ vacantes</p>
+        </div>
+      </a>
+
+      <a href="#empleos" class="category-card">
+        <div class="category-icon"><i class="fa-solid fa-calculator"></i></div>
+        <div>
+          <h3 class="category-title">Finanzas & Contabilidad</h3>
+          <p class="category-count">45+ vacantes</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="jobs-section" id="empleos">
+    <div class="section-header">
+      <span class="section-badge">Oportunidades Recientes</span>
+      <h2 class="section-title">Empleos Destacados</h2>
+      <p class="section-subtitle">Aplica directamente a las mejores empresas en modalidad remota o presencial.</p>
+    </div>
+
+    <div class="jobs-grid">
+      <div class="job-card">
+        <div>
+          <div class="job-card-header">
+            <div class="company-logo">TC</div>
+            <div class="job-info">
+              <h4>Desarrollador Frontend React</h4>
+              <p>TechCorp Ltd. • Remoto</p>
+            </div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">Tecnología</span>
+            <span class="tag tag-green">Remoto</span>
+            <span class="tag">Tiempo Completo</span>
+          </div>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">$2,400 <span>/ mes</span></div>
+          <button class="btn btn-outline" onclick="applyJob('Desarrollador Frontend React')">Postularme</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <div class="job-card-header">
+            <div class="company-logo" style="color: #10B981;">UX</div>
+            <div class="job-info">
+              <h4>Diseñador UX/UI Senior</h4>
+              <p>Studio Design • Bogotá, CO</p>
+            </div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">Diseño</span>
+            <span class="tag">Híbrido</span>
+            <span class="tag">Tiempo Completo</span>
+          </div>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">$1,900 <span>/ mes</span></div>
+          <button class="btn btn-outline" onclick="applyJob('Diseñador UX/UI Senior')">Postularme</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <div class="job-card-header">
+            <div class="company-logo" style="color: #F59E0B;">MK</div>
+            <div class="job-info">
+              <h4>Especialista en Growth Marketing</h4>
+              <p>Scale Agency • Remoto</p>
+            </div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">Marketing</span>
+            <span class="tag tag-green">Remoto</span>
+            <span class="tag">Medio Tiempo</span>
+          </div>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">$1,500 <span>/ mes</span></div>
+          <button class="btn btn-outline" onclick="applyJob('Especialista en Growth Marketing')">Postularme</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <div class="job-card-header">
+            <div class="company-logo" style="color: #8B5CF6;">DA</div>
+            <div class="job-info">
+              <h4>Analista de Datos Junior</h4>
+              <p>DataSync Inc. • Medellín, CO</p>
+            </div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">Datos</span>
+            <span class="tag">Presencial</span>
+            <span class="tag">Tiempo Completo</span>
+          </div>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">$1,600 <span>/ mes</span></div>
+          <button class="btn btn-outline" onclick="applyJob('Analista de Datos Junior')">Postularme</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <div class="job-card-header">
+            <div class="company-logo" style="color: #EC4899;">CS</div>
+            <div class="job-info">
+              <h4>Ejecutivo de Atención al Cliente</h4>
+              <p>Global Connect • Remoto</p>
+            </div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">Soporte</span>
+            <span class="tag tag-green">Remoto</span>
+            <span class="tag">Tiempo Completo</span>
+          </div>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">$1,100 <span>/ mes</span></div>
+          <button class="btn btn-outline" onclick="applyJob('Ejecutivo de Atención al Cliente')">Postularme</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div>
+          <div class="job-card-header">
+            <div class="company-logo" style="color: #06B6D4;">PM</div>
+            <div class="job-info">
+              <h4>Project Manager Digital</h4>
+              <p>Innovate Tech • Remoto</p>
+            </div>
+          </div>
+          <div class="job-tags">
+            <span class="tag">Gestión</span>
+            <span class="tag tag-green">Remoto</span>
+            <span class="tag">Tiempo Completo</span>
+          </div>
+        </div>
+        <div class="job-card-footer">
+          <div class="job-salary">$2,800 <span>/ mes</span></div>
+          <button class="btn btn-outline" onclick="applyJob('Project Manager Digital')">Postularme</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-tabs">
+        <button class="tab-btn active" id="tabRegister" onclick="switchTab('register')">Crear Cuenta</button>
+        <button class="tab-btn" id="tabLogin" onclick="switchTab('login')">Iniciar Sesión</button>
+      </div>
+
+      <form id="modalRegisterForm" onsubmit="handleRegistration(event)">
+        <div class="form-group"><label>Nombre Completo</label><input type="text" class="form-control" required></div>
+        <div class="form-group"><label>Correo</label><input type="email" class="form-control" required></div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem; margin-top: 1rem;">Completar Registro</button>
+      </form>
+
+      <form id="modalLoginForm" style="display: none;" onsubmit="handleLogin(event)">
+        <div class="form-group"><label>Correo</label><input type="email" class="form-control" required></div>
+        <div class="form-group"><label>Contraseña</label><input type="password" class="form-control" required></div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem; margin-top: 1rem;">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toastNotification">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">¡Registro exitoso! Bienvenido a Empleate.</span>
+  </div>
+
+  <button class="ai-chat-btn" onclick="toggleChat()">
+    <i class="fa-solid fa-robot"></i>
+  </button>
+
+  <div class="ai-chat-window" id="aiChatWindow">
+    <div class="chat-header">
+      <div>
+        <i class="fa-solid fa-robot"></i> Asistente Empleate IA
+      </div>
+      <button onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message ai-message">
+        ¡Hola! 👋 Soy la IA de Empleate. ¿En qué puedo ayudarte a impulsar tu carrera hoy?
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." onkeypress="handleChatKeyPress(event)">
+      <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(type) {
+      document.getElementById('authModal').classList.add('active');
+      switchTab(type);
+    }
+
+    function closeModal() {
+      document.getElementById('authModal').classList.remove('active');
+    }
+
+    function switchTab(type) {
+      const isReg = type === 'register';
+      document.getElementById('tabRegister').classList.toggle('active', isReg);
+      document.getElementById('tabLogin').classList.toggle('active', !isReg);
+      document.getElementById('modalRegisterForm').style.display = isReg ? 'block' : 'none';
+      document.getElementById('modalLoginForm').style.display = isReg ? 'none' : 'block';
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMessage').textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    function handleRegistration(e) { e.preventDefault(); closeModal(); showToast('¡Cuenta creada con éxito!'); }
+    function handleLogin(e) { e.preventDefault(); closeModal(); showToast('¡Bienvenido de nuevo!'); }
+
+    function applyJob(jobTitle) {
+      showToast('¡Postulación enviada para ' + jobTitle + '!');
+    }
+
+    // LÓGICA DEL ASISTENTE IA
+    function toggleChat() {
+      document.getElementById('aiChatWindow').classList.toggle('active');
+    }
+
+    function handleChatKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const messageText = input.value.trim();
+      
+      if (messageText === '') return;
+
+      addMessageToChat(messageText, 'user-message');
+      input.value = '';
+
+      setTimeout(() => {
+        const aiResponses = [
+          "¡Excelente pregunta! Te recomiendo completar tu perfil al 100% para que nuestro algoritmo destaque tu CV a las empresas.",
+          "Actualmente tenemos mucha demanda en empleos remotos. ¿Te gustaría que aplique un filtro automático para mostrártelos?",
+          "Como tu IA personal, analicé las tendencias: destacar tus habilidades blandas (comunicación, liderazgo) te dará una gran ventaja hoy.",
+          "Para los cargos que buscas, el salario promedio es muy competitivo. ¡Anímate a postularte desde nuestra plataforma!"
+        ];
+        const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+        
+        addMessageToChat(randomResponse, 'ai-message');
+      }, 1200);
+    }
+
+    function addMessageToChat(text, className) {
+      const chatMessages = document.getElementById('chatMessages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${className}`;
+      messageDiv.textContent = text;
+      
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  </script>
+</body>
+</html>

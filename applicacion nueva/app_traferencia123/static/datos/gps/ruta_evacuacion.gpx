@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="CodeRider App" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Ruta de Evacuación CodeRider</name>
+    <desc>Georreferenciación de la ruta de emergencia y puntos de reunión</desc>
+  </metadata>
+
+  <!-- Puntos clave (Waypoints) -->
+  <wpt lat="2.4448" lon="-76.6147">
+    <name>Inicio Evacuación</name>
+    <desc>Salida Bloque Principal</desc>
+  </wpt>
+
+  <wpt lat="2.4462" lon="-76.6125">
+    <name>Punto de Encuentro 1</name>
+    <desc>Zona verde cancha principal</desc>
+  </wpt>
+
+  <wpt lat="2.4435" lon="-76.6150">
+    <name>Punto de Encuentro 2</name>
+    <desc>Área descubierta parqueadero</desc>
+  </wpt>
+
+  <!-- Trazado de la línea de evacuación -->
+  <trk>
+    <name>Trazado de Evacuación</name>
+    <trkseg>
+      <trkpt lat="2.4448" lon="-76.6147"/>
+      <trkpt lat="2.4455" lon="-76.6138"/>
+      <trkpt lat="2.4462" lon="-76.6125"/>
+    </trkseg>
+  </trk>
+</gpx>

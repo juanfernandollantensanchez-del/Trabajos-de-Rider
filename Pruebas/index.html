@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <p>!Soy un párrafo¡</p>
+    <p class="my-class">!Yo también¡</p>
+    <p id="my-id">Al igual yo.</p>
+    <div>
+        <p>Y yo soy un parrafo dentro de un div.</p>
+    </div>
+    <p>y yo soy un parrafo fuera de un div.</p>
+    
+    <button class="btn-color">Soy un botón</button>
+    
+    <p class="p-final">Yo también soy un párrafo.</p>
+
+    <div id="first">Soy el primer div.</div>
+
+    <div id="second">Soy el segundo div.</div>
+
+    <div id="third">Soy el tercer div.</div>
+    
+    <div style="background-color: #FDB8F6; width: 300px; text-align: center;">
+        Soy un div con estilo personalizado.
+    </div>
+
+    <p>Ejemplo de texto preformateado.</p>
+
+    <pre>
+        dato  78   55
+        dato  23   63
+        dato  44   6
+    </pre>
+
+    <p>2<sub>3</sub> =5</p>
+    <p>nota<sub>1</sub></p>
+
+
+    <h1>Listas</h1>
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+    </ul>
+
+    <ol>
+        <li>Elemento ordenado 1</li>
+        <li>Elemento ordenado 2</li>
+        <li>Elemento ordenado 3</li>
+    </ol>
+
+    <p class="instructions-container">
+        <label for="zip">zip Code <span class="instructions">5 Digits</span></label>
+        <input type="number" pattern="[0-9]*" maxlength="5" min="0" name="zip" id="zip">
+    </p>
+
+    <label for="areacode">Phone * <span class="hidden"> Area Code</span></label>
+    <input required type="tel" name="areacode" id="areacode" maxlength="3">
+    -
+    <label for="threedigits" class="inline"> <span class="hidden">First three phone digits</span> *</label>
+    <input required type="tel" name="threedigits" id="threedigits" maxlength="3">
+    -
+    <label for="fourdigits" class="inline"> <span class="hidden">Last four phone digits</span> *</label>
+    <input required type="tel" name="fourdigits" id="fourdigits" maxlength="4">
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Acordeón Mario Torres</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        
+        <header>
+          <div class="logo">
+              <img src="ESCUELA.png" alt="Escuela de Acordeón Mario Torres" width="250">
+          </div>
+
+            <aside class="redes-header">
+                <img src="Redes.png.png" alt="Redes sociales" width="100">
+            </aside>
+            
+            <nav>
+                <a href="#">CLASES</a>
+                <a href="#">ESCUELA</a>
+                <a href="#">VENTA DE ACORDEONES</a>
+                <a href="#">CONTACTO</a>
+            </nav>
+            
+   <div id="slider">
+
+    <iframe
+        src="https://www.youtube.com/embed/-QrI1aukzRs"
+        title="Video de YouTube"
+        allowfullscreen>
+    </iframe>
+
+    <video controls>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+</div>
+        </header>
+
+        <section class="clases">    
+            <article>
+                <div class="imagen-profesor">
+                    <img src="https://www.decibeles.net/uploads/images/63.png" alt="Profesor tocando el acordeón" width="120" height="120">
+                </div>
+                <div class="texto-clases">
+                    <h2>CLASES DE ACORDEÓN</h2>
+                    <p>Titulado en el conservatorio... (El contenido principal de la escuela va aquí, indicando los niveles, metodologías y detalles de las clases de acordeón de botón o tecla).</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="contacto">
+            <article class="bloque-datos">
+                <h2>CONTACTO</h2>
+                <aside class="redes-contacto">
+                    <img src="Redes.png.png" alt="Redes sociales" width="100">
+                </aside>
+                <p>
+                    <strong>C/ Ventura de la Vega, 11 - 28014 - Madrid</strong><br><br>
+                    Para información de clases de acordeón:<br>
+                    Tl. 600 00 00 00<br><br>
+                    Feria de partituras:<br>
+                    Tl. 91 000 00 00
+                </p>
+
+                <div class="mapa-escuela" style="margin-top: 15px;">
+                    <h3>Nuestra Ubicación</h3>
+                    <iframe 
+                        width="100%" 
+                        height="250" 
+                        style="border:0;" 
+                        loading="lazy" 
+                        allowfullscreen
+                        src="https://maps.google.com/maps?q=Calle%20Ventura%20de%20la%20Vega,%2011,%2028014%20Madrid&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                    </iframe>
+                </div>
+
+                <div class="geolocalizacion" style="margin-top: 20px;">
+                    <h3>Ubicación Actual del Usuario</h3>
+                    <button type="button" onclick="obtenerUbicacion()">Obtener mi ubicación</button>
+                    <p id="resultado-ubicacion"></p>
+                    
+                    <iframe 
+                        id="mapa-usuario" 
+                        width="100%" 
+                        height="250" 
+                        style="border:0; display:none; margin-top:10px;" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </article>
+            
+         <article class="bloque-pedagogia">
+
+    <audio controls>
+        <source src="Audio.mp3.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+    </audio>
+
+    <audio controls>
+        <source src="audio.ogg" type="audio/ogg">
+        Tu navegador no soporta el audio.
+    </audio>
+
+  <article class="radio-item">
+      <h2>Emisora Vallenata en Vivo</h2>
+      <p>Escucha la transmisión en vivo</p>
+      
+      <div style="max-width: 400px; margin: 15px auto; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+        <iframe 
+          id="emisora-iframe"
+          src="https://zeno.fm/player/la-vallenata-radio" 
+          width="100%" 
+          height="180" 
+          frameborder="0" 
+          scrolling="no" 
+          allow="autoplay; encrypted-media; media-playback-user-gesture">
+        </iframe>
+      </div>
+    </article>
+
+    <article class="juego-online">
+
+    <h2>Juego en línea</h2>
+
+    <iframe
+        src="https://funhtml5games.com?embed=2048"
+        width="800"
+        height="500"
+        frameborder="0">
+    </iframe>
+
+</article>
+
+
+</article>
+
+        <footer>
+            <article class="creditos">
+                diseño de página:<br>
+                www.elselloge.com
+            </article>
+            <aside class="redes-footer">
+                <img src="Redes.png.png" alt="Redes sociales" width="100">
+            </aside>
+        </footer>
+
+    </div>
+    <article class="pdf-google">
+
+    <h2>PDF en línea</h2>
+
+    <iframe
+        src="https://drive.google.com/file/d/1AHSCj6F2onc-qIsDPllsKKTdNxv3lxlF/preview"
+        width="100%"
+        height="600">
+    </iframe>
+
+    <section class="paint">
+
+    <h2>Paint con Canvas</h2>
+
+    <canvas id="lienzo" width="800" height="400"></canvas>
+
+    <br><br>
+
+    <button onclick="limpiar()">Limpiar</button>
+
+</section>
+
+<article class="juego-codigo">
+
+    <h2>Adivina el número</h2>
+
+    <p>Escribe un número del 1 al 10.</p>
+
+    <input type="number" id="numero" min="1" max="10">
+
+    <button onclick="jugar()">Jugar</button>
+
+    <p id="resultado"></p>
+
+</article>
+
+<section class="figura3d">
+
+    <h2>Figura 3D con Canvas</h2>
+
+    <canvas id="figura3d" width="500" height="350"></canvas>
+
+</section>
+
+</article>
+
+    <script>
+      function obtenerUbicacion() {
+        const textoResultado = document.getElementById("resultado-ubicacion");
+        const mapaUsuario = document.getElementById("mapa-usuario");
+
+        if ("geolocation" in navigator) {
+          textoResultado.innerText = "Buscando ubicación...";
+
+          navigator.geolocation.getCurrentPosition(
+            function (posicion) {
+              const latitud = posicion.coords.latitude;
+              const longitud = posicion.coords.longitude;
+              
+              textoResultado.innerHTML = `
+                Latitud: ${latitud}<br>
+                Longitud: ${longitud}
+              `;
+
+              // Muestra e inserta el mapa de Google Maps con las coordenadas del usuario
+              mapaUsuario.src = `https://maps.google.com/maps?q=${latitud},${longitud}&z=15&output=embed`;
+              mapaUsuario.style.display = "block";
+            },
+            function (error) {
+              switch (error.code) {
+                case error.PERMISSION_DENIED:
+                  textoResultado.innerText = "Permiso denegado por el usuario.";
+                  break;
+                case error.POSITION_UNAVAILABLE:
+                  textoResultado.innerText = "Ubicación no disponible.";
+                  break;
+                case error.TIMEOUT:
+                  textoResultado.innerText = "Tiempo de espera agotado.";
+                  break;
+                default:
+                  textoResultado.innerText = "Error al obtener la ubicación.";
+                  break;
+              }
+            }
+          );
+        } else {
+          textoResultado.innerText = "Tu navegador no soporta geolocalización.";
+        }
+      }
+    </script>
+    <!-- SCRIPT DE CONTROL DE RADIO -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('emisora-iframe');
+
+      const iniciarAudioAlClic = () => {
+        if (iframe) {
+          iframe.src = "https://zeno.fm/player/la-vallenata-radio?autoplay=1";
+        }
+        window.removeEventListener('click', iniciarAudioAlClic);
+        window.removeEventListener('touchstart', iniciarAudioAlClic);
+      };
+
+      window.addEventListener('click', iniciarAudioAlClic);
+      window.addEventListener('touchstart', iniciarAudioAlClic);
+    });
+  </script>
+
+  <script>
+const canvas = document.getElementById("lienzo");
+const ctx = canvas.getContext("2d");
+
+let dibujando = false;
+
+canvas.addEventListener("mousedown", () => {
+    dibujando = true;
+    ctx.beginPath();
+});
+
+canvas.addEventListener("mouseup", () => {
+    dibujando = false;
+});
+
+canvas.addEventListener("mousemove", dibujar);
+
+function dibujar(e){
+
+    if(!dibujando) return;
+
+    const rect = canvas.getBoundingClientRect();
+
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "black";
+
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+}
+
+function limpiar(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+</script>
+
+<script>
+
+function jugar(){
+
+    let secreto = Math.floor(Math.random()*10)+1;
+
+    let numero = document.getElementById("numero").value;
+
+    if(numero == secreto){
+
+        document.getElementById("resultado").innerHTML =
+        "🎉 ¡Ganaste! El número era " + secreto;
+
+    }else{
+
+        document.getElementById("resultado").innerHTML =
+        "❌ Perdiste. El número era " + secreto;
+
+    }
+
+}
+
+</script>
+
+<script>
+
+const canvasFigura = document.getElementById("figura3d");
+const ctxFigura = canvasFigura.getContext("2d");
+
+// Base
+ctxFigura.beginPath();
+ctxFigura.moveTo(150,250);
+ctxFigura.lineTo(300,250);
+ctxFigura.lineTo(350,180);
+ctxFigura.lineTo(200,180);
+ctxFigura.closePath();
+ctxFigura.stroke();
+
+// Cara izquierda
+ctxFigura.beginPath();
+ctxFigura.moveTo(150,250);
+ctxFigura.lineTo(250,80);
+ctxFigura.lineTo(200,180);
+ctxFigura.closePath();
+ctxFigura.stroke();
+
+// Cara derecha
+ctxFigura.beginPath();
+ctxFigura.moveTo(250,80);
+ctxFigura.lineTo(350,180);
+ctxFigura.lineTo(300,250);
+ctxFigura.closePath();
+ctxFigura.stroke();
+
+// Cara trasera
+ctxFigura.beginPath();
+ctxFigura.moveTo(250,80);
+ctxFigura.lineTo(200,180);
+ctxFigura.lineTo(350,180);
+ctxFigura.closePath();
+ctxFigura.stroke();
+
+</script>
+
+</body>
+</html>

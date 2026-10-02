@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo de Menú Sticky con Scroll</title>
+    <style>
+        /* Estilos Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* Encabezado gigante de bienvenida */
+        .header-bienvenida {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .header-bienvenida h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* ==========================================
+           EL TRUCO: MENÚ CON POSITION STICKY
+        ============================================ */
+        .menu-navegacion {
+            background-color: #ffffff;
+            padding: 0 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            /* Propiedades mágicas de Sticky */
+            position: -webkit-sticky; /* Soporte para Safari antiguo */
+            position: sticky;
+            top: 0; /* Se quedará pegado exactamente arriba del todo */
+            z-index: 1000; /* Asegura que el menú pase por encima de todo el contenido */
+        }
+
+        .menu-navegacion ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .menu-navegacion li a {
+            display: block;
+            padding: 20px 25px;
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto al pasar el cursor */
+        .menu-navegacion li a:hover {
+            color: #2a5298;
+            background-color: #f7fafc;
+            border-bottom: 3px solid #2a5298;
+        }
+
+        /* Contenedor del contenido para hacer scroll */
+        .contenido {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .seccion-relleno {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .seccion-relleno h2 {
+            color: #2a5298;
+            margin-bottom: 15px;
+        }
+
+        /* Indicador visual flotante */
+        .indicador-scroll {
+            text-align: center;
+            background: #e2e8f0;
+            padding: 10px;
+            font-weight: bold;
+            color: #4a5568;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bienvenida">
+        <h1>Mi Sitio Web</h1>
+        <p>Baja la página para ver cómo el menú se queda fijo en la parte superior</p>
+    </header>
+
+    <div class="indicador-scroll">👇 Haz scroll hacia abajo 👇</div>
+
+    <nav class="menu-navegacion">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#articulos">Artículos</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main class="contenido">
+        
+        <section id="inicio" class="seccion-relleno">
+            <h2>Sección de Inicio</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget elit sit amet diam sollicitudin ultrices. Proin sit amet varius diam. In finibus tellus a eros facilisis, ut tristique justo pellentesque. Cras finibus tincidunt elementum.</p>
+            <p>Nullam vehicula, urna ac aliquet sodales, felis ligula sollicitudin leo, vitae porttitor purus lorem ut massa. Fusce tristique, mi ut volutpat vestibulum, erat odio scelerisque nisl, vel tempus nibh nisl ut elit.</p>
+        </section>
+
+        <section id="articulos" class="seccion-relleno">
+            <h2>Últimos Artículos</h2>
+            <p>Adfabricati quaedam in, idque apud me hoc tempore. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+            <p>Morbi tincidunt eget elit id egestas. Vivamus sit amet erat hendrerit, molestie nisl ac, dictum magna. Curabitur sed vestibulum erat, quis eleifend sem. Sed sit amet sodales lorem, at scelerisque lorem.</p>
+        </section>
+
+        <section id="portafolio" class="seccion-relleno">
+            <h2>Nuestro Portafolio</h2>
+            <p>Mauris rhoncus pretium porttitor. Cras sit amet dolor sit amet nisl convallis mattis. Ut vel tellus erat. Proin nec feugiat lectus. Ut luctus, ex ut interdum sodales, diam lorem sodales nisl, id sollicitudin lorem urna in turpis.</p>
+            <p>Sed vel eleifend ligula. Suspendisse pulvinar, eros vel porta tincidunt, sem odio congue erat, ut dictum erat sapien in justo. Maecenas sed turpis ac lorem pulvinar vulputate vel in mi.</p>
+        </section>
+
+        <section id="contacto" class="seccion-relleno">
+            <h2>Formulario de Contacto</h2>
+            <p>Donec interdum convallis ex ac convallis. Proin accumsan, justo eget lobortis porta, magna turpis feugiat tortor, id euismod erat augue sed elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            <p>Final de la página. Si subes de nuevo, verás que el menú se vuelve a integrar a su lugar original cuando el encabezado azul vuelve a aparecer.</p>
+        </section>
+
+    </main>
+
+</body>
+</html>

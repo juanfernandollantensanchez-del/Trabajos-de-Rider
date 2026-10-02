@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Temblor</title>
+</head>
+<body>
+
+    <!-- 1. BLOQUE DE BÚSQUEDA MULTICAMPO -->
+    <h2>Buscar Evento Sísmico</h2>
+    <form action="{% url 'lista_temblores' %}" method="GET">
+        <div>
+            <label for="campo">Buscar por:</label>
+            <select name="campo" id="campo">
+                <option value="todos">Todos los campos</option>
+                <option value="id">ID</option>
+                <option value="nombre">Nombre / Lugar</option>
+                <option value="magnitud">Magnitud</option>
+                <option value="profundidad">Profundidad</option>
+                <option value="fecha_hora">Fecha y Hora</option>
+                <option value="intensidad">Intensidad</option>
+                <option value="alerta">Alerta</option>
+                <option value="observaciones">Observaciones</option>
+            </select>
+
+            <input 
+                type="text" 
+                id="buscar" 
+                name="q" 
+                placeholder="Escribe el texto o número a buscar..." 
+                style="width: 250px;"
+            >
+            <button type="submit">Buscar</button>
+        </div>
+    </form>
+
+    <hr style="margin: 20px 0;">
+
+    <!-- 2. BLOQUE DE REGISTRO -->
+    <h2>Registrar Evento Sísmico</h2>
+
+    <form action="{% url 'salida_temblor' %}" method="POST">
+        {% csrf_token %}
+        
+        <div>
+            <label for="temblor">Nombre del Temblor / Lugar:</label><br>
+            <input type="text" id="temblor" name="temblor" required placeholder="Ej: Popayán">
+        </div>
+        <br>
+
+        <div>
+            <label for="fecha_hora">Fecha y Hora:</label><br>
+            <input type="datetime-local" id="fecha_hora" name="fecha_hora">
+        </div>
+        <br>
+
+        <div>
+            <label for="magnitud">Magnitud:</label><br>
+            <input type="number" step="0.1" id="magnitud" name="magnitud" required placeholder="Ej: 5.2">
+        </div>
+        <br>
+
+        <div>
+            <label for="profundidad">Profundidad (km):</label><br>
+            <input type="number" id="profundidad" name="profundidad" placeholder="Ej: 30">
+        </div>
+        <br>
+
+        <div>
+            <label for="intensidad">Intensidad:</label><br>
+            <input type="text" id="intensidad" name="intensidad" placeholder="Ej: IV - Moderada">
+        </div>
+        <br>
+
+        <div>
+            <label for="alerta">Alerta:</label><br>
+            <input type="text" id="alerta" name="alerta" placeholder="Ej: Amarilla">
+        </div>
+        <br>
+
+        <div>
+            <label for="observaciones">Observaciones:</label><br>
+            <textarea id="observaciones" name="observaciones" rows="3" cols="30"></textarea>
+        </div>
+        <br>
+
+        <button type="submit">Guardar Registro</button>
+        
+        <a href="{% url 'lista_temblores' %}">
+            <button type="button">Ver Lista Completa</button>
+        </a>
+    </form>
+
+</body>
+</html>

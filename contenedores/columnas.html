@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Demostración Real de Break</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #f1f5f9;
+            padding: 40px;
+        }
+
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        /* 3 COLUMNAS */
+        .seccion-columnas {
+            column-count: 3;
+            column-gap: 20px;
+            column-rule: 2px solid #cbd5e1;
+            
+            /* Altura grande para que quepan varias tarjetas por columna */
+            height: 450px; 
+            column-fill: auto; 
+        }
+
+        .tarjeta {
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #e2e8f0;
+        }
+
+        /* ==========================================
+           AQUÍ SE APLICA EL EFECTO QUE VAS A NOTAR
+        ============================================ */
+        
+        .forzar-salto-despues {
+            border-color: #3498db;
+            
+            /* TRUCO: Aunque abajo de esta tarjeta queda un montón de espacio libre 
+               en la columna 1, obligamos a que la Tarjeta 2 se mude a la columna 2. */
+            break-after: column; 
+        }
+
+        .forzar-salto-antes {
+            border-color: #9b59b6;
+            
+            /* TRUCO: Aunque la Tarjeta 3 esté en la columna 2 y quede espacio abajo,
+               esta Tarjeta 4 se niega a compartir columna y salta sola a la columna 3. */
+            break-before: column; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h2 style="margin-bottom: 20px; text-align: center;">Viendo los cortes en acción</h2>
+        
+        <div class="seccion-columnas">
+            
+            <div class="tarjeta forzar-salto-despues">
+                <h3>Tarjeta 1 (Azul)</h3>
+                <p>Tengo un <code>break-after: column</code>.</p>
+                <p>Mira abajo de mí... ¡La columna 1 está completamente vacía! Obligué a la Tarjeta 2 a irse a la siguiente columna.</p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Tarjeta 2</h3>
+                <p>Yo debería estar abajo de la Tarjeta 1, pero su corte me mandó al inicio de la Columna 2.</p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Tarjeta 3</h3>
+                <p>Yo me acomodo normalmente debajo de la Tarjeta 2 porque hay espacio.</p>
+            </div>
+
+            <div class="tarjeta forzar-salto-antes">
+                <h3>Tarjeta 4 (Morada)</h3>
+                <p>Tengo un <code>break-before: column</code>.</p>
+                <p>Por orden natural debería estar en la columna 2 abajo de la Tarjeta 3, pero dije: "¡Antes de mí, me haces un salto!" y me vine al inicio de la Columna 3.</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

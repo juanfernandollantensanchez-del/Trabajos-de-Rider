@@ -1,0 +1,101 @@
+/* Estilos Generales */
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.tarjeta {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 900px;
+}
+
+/* Formulario */
+form p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form-input,
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.form-input:focus,
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #a855f7;
+}
+
+button[type="submit"] {
+    background-color: #a855f7;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #9333ea;
+}
+
+/* Contenedor del Mapa - Requerido para Leaflet */
+#mapa {
+    height: 450px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    margin-top: 1rem;
+    z-index: 1;
+}
+
+.botonera {
+    margin-bottom: 1rem;
+}
+
+.btn-mapa {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+.btn-mapa:hover {
+    filter: brightness(1.1);
+}
+
+.btn-verde {
+    background-color: #10b981;
+}
+
+.btn-azul {
+    background-color: #3b82f6;
+}

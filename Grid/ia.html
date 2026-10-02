@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EmpléIA | Asistente Inteligente</title>
+
+<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <i class="fa-solid fa-robot"></i>
+
+        <h2>EmpléIA</h2>
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Inicio</a>
+
+        <a href="#chat">Chat</a>
+
+        <a href="#ayuda">Ayuda</a>
+
+    </nav>
+
+</header>
+
+<main>
+
+<section class="presentacion">
+
+    <div class="texto">
+
+        <h1>Hola 👋 Soy EmpléIA</h1>
+
+        <p>
+
+            Soy el asistente inteligente de Empléate.
+            Puedo ayudarte a encontrar empleos,
+            crear tu hoja de vida y responder
+            preguntas sobre la plataforma.
+
+        </p>
+
+    </div>
+
+    <img src="img/chatbot.png" alt="IA">
+
+</section>
+
+<section class="chat" id="chat">
+
+<h2>Chat Inteligente</h2>
+
+<div class="chat-box" id="chatBox">
+
+<div class="mensaje ia">
+
+🤖 Hola, soy EmpléIA.
+
+¿En qué puedo ayudarte hoy?
+
+</div>
+
+</div>
+
+<div class="entrada">
+
+<input
+type="text"
+id="pregunta"
+placeholder="Escribe tu pregunta...">
+
+<button onclick="enviarMensaje()">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Enviar
+
+</button>
+
+</div>
+
+</section>
+
+<section class="sugerencias">
+
+<h2>Preguntas frecuentes</h2>
+
+<div class="preguntas">
+
+<button onclick="respuestaRapida('empleos')">
+
+Buscar empleos
+
+</button>
+
+<button onclick="respuestaRapida('hoja')">
+
+Crear hoja de vida
+
+</button>
+
+<button onclick="respuestaRapida('empresa')">
+
+Publicar vacantes
+
+</button>
+
+<button onclick="respuestaRapida('perfil')">
+
+Actualizar perfil
+
+</button>
+
+<button onclick="respuestaRapida('postulacion')">
+
+Mis postulaciones
+
+</button>
+
+<button onclick="respuestaRapida('contacto')">
+
+Contacto
+
+</button>
+
+</div>
+
+</section>
+<!-- ================= CONSEJOS ================= -->
+
+<section class="consejos" id="ayuda">
+
+    <h2>Consejos para conseguir empleo</h2>
+
+    <div class="consejos-grid">
+
+        <div class="consejo">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <h3>Hoja de Vida</h3>
+
+            <p>
+                Mantén tu hoja de vida actualizada con tus estudios,
+                experiencia y habilidades.
+            </p>
+
+        </div>
+
+        <div class="consejo">
+
+            <i class="fa-solid fa-user-tie"></i>
+
+            <h3>Entrevistas</h3>
+
+            <p>
+                Prepárate investigando sobre la empresa y practicando
+                preguntas comunes.
+            </p>
+
+        </div>
+
+        <div class="consejo">
+
+            <i class="fa-solid fa-laptop-code"></i>
+
+            <h3>Perfil Profesional</h3>
+
+            <p>
+                Completa toda la información de tu perfil para recibir
+                mejores recomendaciones.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ACCESOS RÁPIDOS ================= -->
+
+<section class="accesos">
+
+    <h2>Accesos Rápidos</h2>
+
+    <div class="accesos-grid">
+
+        <a href="candidato.html" class="acceso">
+
+            <i class="fa-solid fa-user"></i>
+
+            <h3>Panel Candidato</h3>
+
+        </a>
+
+        <a href="empresa.html" class="acceso">
+
+            <i class="fa-solid fa-building"></i>
+
+            <h3>Panel Empresa</h3>
+
+        </a>
+
+        <a href="admin.html" class="acceso">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+            <h3>Panel Admin</h3>
+
+        </a>
+
+        <a href="index.html" class="acceso">
+
+            <i class="fa-solid fa-house"></i>
+
+            <h3>Volver al Inicio</h3>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= HISTORIAL ================= -->
+
+<section class="historial">
+
+    <h2>Consultas Recientes</h2>
+
+    <ul>
+
+        <li>🤖 ¿Cómo crear una hoja de vida?</li>
+
+        <li>🤖 Buscar vacantes de Programador.</li>
+
+        <li>🤖 Empresas en Popayán.</li>
+
+        <li>🤖 Estado de mis postulaciones.</li>
+
+        <li>🤖 Recomendaciones de empleo.</li>
+
+    </ul>
+
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-ia">
+
+        <div>
+
+            <h2>EmpléIA</h2>
+
+            <p>
+                Tu asistente inteligente para encontrar nuevas oportunidades laborales.
+            </p>
+
+        </div>
+
+        <div class="redes">
+
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p>
+        © 2026 EmpléIA | Proyecto Empléate | Juan Sánchez - SENA ADSO
+    </p>
+
+</footer>
+<a href="index.html">Volver al inicio</a>
+<script src="script.js"></script>
+
+</body>
+</html>

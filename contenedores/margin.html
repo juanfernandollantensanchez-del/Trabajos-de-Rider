@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplos de Margen en CSS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        /* Contenedor gris para ver el espacio disponible */
+        .contenedor {
+            background-color: #e0e0e0;
+            padding: 15px;
+            margin-bottom: 30px;
+            border: 2px dashed #999;
+            border-radius: 6px;
+        }
+
+        /* Estilo base para las cajas de ejemplo */
+        .caja {
+            width: 200px; /* Es obligatorio que tengan ancho fijo */
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        /* 1. MARGIN: AUTO (Centrado horizontal) */
+        .ejemplo-auto {
+            background-color: #3498db; /* Azul */
+            margin: 0 auto; 
+        }
+
+        /* 2. MARGIN-LEFT (Espaciado fijo a la izquierda) */
+        .ejemplo-left {
+            background-color: #e74c3c; /* Rojo */
+            margin-left: 50px; 
+        }
+
+        /* 3. MARGIN-LEFT: AUTO (Empuja todo hacia la derecha) */
+        .ejemplo-left-auto {
+            background-color: #2ecc71; /* Verde */
+            margin-left: auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>1. `margin: 0 auto` (Centrado Automático)</h2>
+    <div class="contenedor">
+        <div class="caja ejemplo-auto">Centrado</div>
+    </div>
+    <p><strong>Cómo funciona:</strong> Al decirle <code>margin: 0 auto</code>, el navegador calcula el espacio libre que queda a los lados y lo divide en partes iguales. Esto centra la caja perfectamente en su contenedor.</p>
+
+    <hr style="margin: 20px 0;">
+
+    <h2>2. `margin-left: 50px` (Margen fijo)</h2>
+    <div class="contenedor">
+        <div class="caja ejemplo-left">50px desde la izq</div>
+    </div>
+    <p><strong>Cómo funciona:</strong> Empuja la caja exactamente 50 píxeles hacia la derecha, alejándose del borde izquierdo del contenedor. Es una medida rígida.</p>
+
+    <hr style="margin: 20px 0;">
+
+    <h2>3. `margin-left: auto` (Alineado a la derecha)</h2>
+    <div class="contenedor">
+        <div class="caja ejemplo-left-auto">Empujado a la derecha</div>
+    </div>
+    <p><strong>Cómo funciona:</strong> Este es un gran truco de CSS. Al decirle al margen izquierdo que sea <code>auto</code>, le ordenas que consuma <b>todo</b> el espacio disponible que haya a la izquierda. Como resultado, la caja verde es empujada por completo hacia el extremo derecho.</p>
+
+</body>
+</html>

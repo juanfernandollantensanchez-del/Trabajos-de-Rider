@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Temblores</title>
+</head>
+<body>
+    <h1>Historial Completo de Registros Sísmicos</h1>
+
+    <!-- Barra de búsqueda dentro de la misma lista -->
+    <form action="{% url 'lista_temblores' %}" method="GET">
+        <div>
+            <label for="campo">Buscar por:</label>
+            <select name="campo" id="campo">
+                <option value="todos" {% if campo == 'todos' %}selected{% endif %}>Todos los campos</option>
+                <option value="id" {% if campo == 'id' %}selected{% endif %}>ID</option>
+                <option value="nombre" {% if campo == 'nombre' %}selected{% endif %}>Nombre / Lugar</option>
+                <option value="magnitud" {% if campo == 'magnitud' %}selected{% endif %}>Magnitud</option>
+                <option value="profundidad" {% if campo == 'profundidad' %}selected{% endif %}>Profundidad</option>
+                <option value="fecha_hora" {% if campo == 'fecha_hora' %}selected{% endif %}>Fecha y Hora</option>
+                <option value="intensidad" {% if campo == 'intensidad' %}selected{% endif %}>Intensidad</option>
+                <option value="alerta" {% if campo == 'alerta' %}selected{% endif %}>Alerta</option>
+                <option value="observaciones" {% if campo == 'observaciones' %}selected{% endif %}>Observaciones</option>
+            </select>
+
+            <input 
+                type="text" 
+                id="buscar" 
+                name="q" 
+                value="{{ query }}" 
+                placeholder="Escribe para buscar..." 
+                style="width: 250px;"
+            >
+            <button type="submit">Buscar</button>
+
+            {% if query %}
+                <a href="{% url 'lista_temblores' %}">
+                    <button type="button">Limpiar Búsqueda</button>
+                </a>
+            {% endif %}
+        </div>
+    </form>
+
+    <br>
+
+    {% if query %}
+        <p>Resultados filtrados para: <strong>"{{ query }}"</strong></p>
+    {% endif %}
+
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre / Lugar</th>
+                <th>Magnitud</th>
+                <th>Profundidad</th>
+                <th>Fecha y Hora</th>
+                <th>Intensidad</th>
+                <th>Alerta</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sismo in registros %}
+                <tr>
+                    <td>{{ sismo.id }}</td>
+                    <td>{{ sismo.nombre }}</td>
+                    <td>{{ sismo.magnitud }} Mw</td>
+                    <td>{{ sismo.profundidad|default:"N/A" }} km</td>
+                    <td>{{ sismo.fecha_hora|default:"N/A" }}</td>
+                    <td>{{ sismo.intensidad|default:"N/A" }}</td>
+                    <td>{{ sismo.alerta|default:"N/A" }}</td>
+                    <td>{{ sismo.observaciones|default:"Sin observaciones" }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="8">No se encontraron registros.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+    <a href="{% url 'temblor' %}">
+        <button type="button">Volver al formulario de registro</button>
+    </a>
+</body>
+</html>

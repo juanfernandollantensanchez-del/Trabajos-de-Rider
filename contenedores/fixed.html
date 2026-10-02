@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Position CSS con Fixed</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para organizar el contenido */
+    align-items: center;
+    padding: 30px;
+    height: 1500px; /* Añadimos altura para poder probar el scroll con el fixed */
+}
+
+/* CAJA FIJA (IGNORA EL CONTENEDOR Y SE QUEDA EN LA PANTALLA) */
+.fixed-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    padding: 15px;
+    background: rebeccapurple; /* Color violeta para diferenciarlo */
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    z-index: 1000; /* Asegura que quede por encima de todo */
+    transition: transform 0.2s ease;
+}
+
+.fixed-panel:hover {
+    transform: scale(1.03);
+}
+
+.fixed-panel h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.fixed-panel p {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.fixed-panel button {
+    background: white;
+    color: rebeccapurple;
+    border: none;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.fixed-panel button:hover {
+    background: #ffdf00;
+    color: #333;
+}
+
+
+/* CONTENEDOR PRINCIPAL (RELATIVE) */
+.container{
+    width: 600px;
+    height: 350px;
+    border: 3px dashed black;
+    position: relative;
+    background: #f9f9f9;
+    margin-top: 20px;
+}
+
+/* CAJAS ABSOLUTAS */
+.box{
+    width: 120px;
+    height: 70px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ESQUINAS */
+.top-left{
+    top: 30px;
+    left: 30px;
+    background: red;
+}
+
+.top-right{
+    top: 30px;
+    right: 30px;
+    background: orange;
+}
+
+.bottom-left{
+    bottom: 30px;
+    left: 30px;
+    background: yellow;
+}
+
+.bottom-right{
+    bottom: 30px;
+    right: 30px;
+    background: green;
+}
+
+/* CENTRO */
+.center{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: turquoise;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Demostración de CSS Position</h2>
+<p>Prueba a hacer scroll hacia abajo. Verás que las cajas de colores se mueven con la página, pero el panel violeta se queda quieto.</p>
+
+<div class="container">
+
+    <div class="box top-left">
+        top: 30px<br>left: 30px
+    </div>
+
+    <div class="box top-right">
+        top: 30px<br>right: 30px
+    </div>
+
+    <div class="box bottom-left">
+        bottom: 30px<br>left: 30px
+    </div>
+
+    <div class="box bottom-right">
+        bottom: 30px<br>right: 30px
+    </div>
+
+    <div class="box center">
+        Centro<br>(Absolute)
+    </div>
+
+</div>
+
+<div class="fixed-panel">
+    <h4>Soporte Activo</h4>
+    <p>Estoy usando position: fixed</p>
+    <button onclick="alert('¡Hola! Soy un elemento fijo')">Ayuda</button>
+</div>
+
+</body>
+</html>

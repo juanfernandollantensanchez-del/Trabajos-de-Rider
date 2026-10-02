@@ -1,0 +1,122 @@
+/* =========================================================================
+   1. TODOS LOS @IMPORT (Obligatorios en las primeras líneas)
+   ========================================================================= */
+@import url("mobile.css") (width <= 640px);
+@import url("desktop.css") (width >= 1200px);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Y el último import que me pediste, asignado a la capa 'nombre': */
+@import url("fichero.css") layer(nombre);
+
+
+/* =========================================================================
+   2. DEFINICIÓN DE LAS CAPAS (El orden exacto que me pediste)
+   ========================================================================= */
+@layer base, componentes, nombre, nombre.subcapa, nombre1, nombre2, nombre3;
+
+
+/* =========================================================================
+   3. ESTILOS GLOBALES Y PORTAFOLIO (Capas Base y Componentes)
+   ========================================================================= */
+@layer base {
+    :root {
+        --color-fondo: #f4f6f9;
+        --color-texto: #333333;
+        --color-menu: #1a252f;
+        --color-tarjeta: #ffffff;
+        --borde-tarjeta: transparent;
+    }
+    body.modo-oscuro {
+        --color-fondo: #1a1a1a;
+        --color-texto: #e0e0e0;
+        --color-menu: #000000;
+        --color-tarjeta: #2c2c2c;
+        --borde-tarjeta: 2px solid #3498db;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: var(--color-fondo); color: var(--color-texto); transition: all 0.4s ease; }
+}
+
+@layer componentes {
+    .menu-superior { background-color: var(--color-menu); color: white; padding: 20px; display: flex; position: sticky; top: 0; z-index: 1000; }
+    .logo { font-size: 1.5rem; font-weight: bold; }
+    .enlaces { list-style: none; display: flex; gap: 20px; }
+    .enlaces a { color: #ffffff; text-decoration: none; }
+    .seccion-hero { color: white; display: flex; justify-content: center; align-items: center; text-align: center; height: 60vh; background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('fondo-tablet.jpg'); background-size: cover; }
+    .seccion-proyectos { padding: 60px 20px; text-align: center; }
+    .contenedor-grid { display: grid; gap: 20px; margin-top: 40px; }
+    .tarjeta-proyecto { background-color: var(--color-tarjeta); color: var(--color-texto); border: var(--borde-tarjeta); padding: 30px; border-radius: 8px; }
+}
+
+
+/* =========================================================================
+   4. TU NUEVO EJERCICIO: CÓDIGO DE LA FOTO DISTRIBUIDO EN TUS CAPAS
+   ========================================================================= */
+
+/* --- Capa: nombre --- */
+@layer nombre {
+    /* Aquí definimos el contenedor Padre y la variable inicial tal cual tu foto */
+    .parent {
+        --background-color: black; /* Variable Local */
+        background: indigo;        /* Fondo Índigo de la pantalla */
+        padding: 1rem;
+        display: flex;
+        gap: 1rem;
+        margin: 30px auto;
+        max-width: 500px;
+        border-radius: 8px;
+    }
+}
+
+/* --- Capa: nombre subcapa --- */
+@layer nombre.subcapa {
+    /* Usamos la subcapa para darle los estilos estructurales a los hijos */
+    .child {
+        width: 100px;
+        height: 100px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+}
+
+/* --- Capa: nombre1 --- */
+@layer nombre1 {
+    /* En esta capa hacemos que los hijos apliquen la variable heredada (se verán negros) */
+    .child {
+        background: var(--background-color); 
+    }
+}
+
+/* --- Capa: nombre2 --- */
+@layer nombre2 {
+    /* Podrías usar esta capa intermedia para añadir efectos adicionales si quisieras */
+    .child {
+        border-radius: 4px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+}
+
+/* --- Capa: nombre3 --- */
+@layer nombre3 {
+    /* Como esta capa va al final, aquí aplicamos la excepción de la foto (--background-color: gold) */
+    /* Al estar en la última capa, nos aseguramos de que gane y pinte el primer cuadrado de dorado */
+    .first {
+        --background-color: gold;
+        color: black; /* Letra negra para que se lea en el fondo dorado */
+        font-weight: bold;
+    }
+}
+
+
+/* =========================================================================
+   5. MEDIA QUERIES (Sintaxis moderna)
+   ========================================================================= */
+@media screen and (width <= 640px) {
+    .contenedor-grid { grid-template-columns: 1fr; }
+}
+@media screen and (width >= 1200px) {
+    .contenedor-grid { grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 40px auto; }
+}

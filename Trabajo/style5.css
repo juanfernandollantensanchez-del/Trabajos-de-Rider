@@ -1,0 +1,194 @@
+/* Configuración de Pantalla */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* Espacio tridimensional */
+.scene {
+    perspective: 1000px;
+}
+
+/* Contenedor del mapa */
+.map-container {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    transform-style: preserve-3d;
+    transform: rotateX(65deg) rotateZ(-10deg);
+}
+
+/* Superficie con tu mapa */
+.map-top {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #24a0ed;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/008/363/766/non_2x/3d-map-of-cauca-is-a-department-of-colombia-vector.jpg');
+    background-size: 115%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
+}
+
+/* Relieve inferior del disco */
+.map-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #0f5c92;
+    border-radius: 50%;
+    transform: translateZ(-22px);
+    z-index: 1;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Posicionamiento vertical del Logo SENA */
+.pin-3d {
+    position: absolute;
+    top: 45%;
+    left: 46%;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    transform: translate3d(-50%, -100%, 5px) rotateX(-65deg) rotateY(10deg);
+    z-index: 10;
+}
+
+/* Contenedor del Logo SENA construído vectorialmente con los colores de la bandera */
+.sena-logo-container {
+    position: absolute;
+    bottom: 0;
+    left: -40px;
+    width: 80px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* El círculo superior del Logo del SENA */
+.sena-circle {
+    width: 24px;
+    height: 24px;
+    background-color: #003893; /* Azul institucional */
+    border-radius: 50%;
+    margin-bottom: 8px;
+    border: 2px solid #000;
+}
+
+/* El cuerpo triangular del SENA dividido en las 3 líneas características */
+.sena-triangle-body {
+    width: 70px;
+    height: 80px;
+    position: relative;
+    /* Recorta en forma de triángulo invertido general */
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    /* Crea las tres barras verticales separadas usando degradados */
+    background: linear-gradient(to right, 
+        #ce1126 0%, #ce1126 24%, 
+        transparent 24%, transparent 38%,
+        #003893 38%, #003893 62%, 
+        transparent 62%, transparent 76%,
+        #fcd116 76%, #fcd116 100%
+    );
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.8));
+}
+
+/* Añade un contorno negro estilizado a los bordes del triángulo del SENA */
+.sena-triangle-body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 3px solid #000000;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+/* Línea indicadora SVG */
+.pointer-line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    transform: translateZ(8px);
+    overflow: visible;
+    pointer-events: none;
+}
+
+.pointer-line polyline {
+    fill: none;
+    stroke: #444444;
+    stroke-width: 2px;
+}
+
+/* Cartel Informativo Recto y Conectado */
+.info-card {
+    position: absolute;
+    top: 32%;
+    left: 81%;
+    background: #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 1px solid #b5b5b5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 135px;
+    
+    /* Mantiene el cartel perfectamente de frente al usuario */
+    transform: rotateZ(10deg) rotateX(-65deg) translateZ(85px) scale(1.3);
+    transform-origin: left center;
+    z-index: 20;
+}
+
+/* Icono dentro del cartel */
+.card-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: #0d2c54;
+}
+
+/* Textos */
+.card-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text h2 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 800;
+    color: #0d2c54;
+    letter-spacing: 0.5px;
+}
+
+.card-text p {
+    margin: 0;
+    font-size: 11px;
+    color: #333333;
+}
+
+.card-text .sub {
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.card-text .city {
+    color: #666666;
+    font-weight: 400;
+}

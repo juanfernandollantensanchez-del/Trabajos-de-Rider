@@ -1,0 +1,244 @@
+/* ==========================================
+   ESTILOS GENERALES Y MAQUETACIÓN
+   ========================================== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+/* ==========================================
+   HEADER & NAVEGACIÓN (Bloque Superior)
+   ========================================== */
+header {
+    padding: 20px;
+    position: relative;
+}
+
+header article h1 {
+    font-size: 20px;
+    color: #2c4a45;
+    margin: 0;
+    border-left: 5px solid #b39223;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.redes-header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+nav {
+    background-color: #333;
+    margin-top: 15px;
+    padding: 10px;
+    text-align: right;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+#slider{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    height: 350px;
+    background: #e6f2ff;
+    border: 1px solid #99c2ff;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#slider iframe,
+#slider video{
+    width: 50%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+/* ==========================================
+   SECCIÓN CLASES (Bloque Amarillo / Mostaza)
+   ========================================== */
+/* Representa el contenedor <section> con borde blanco divisor */
+section.clases {
+    background-color: #b8982a;
+    padding: 20px;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+}
+
+/* Representa la caja interna <article> */
+section.clases article {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* El bloque <div> que envuelve a la imagen */
+.imagen-profesor {
+    background: white;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+.texto-clases h2 {
+    color: #4a3c10;
+    font-size: 18px;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 5px;
+}
+
+.texto-clases p {
+    font-size: 12px;
+    color: #333;
+}
+
+/* ==========================================
+   SECCIÓN CONTACTO (Bloque Verde Oscuro)
+   ========================================== */
+section.contacto {
+    background-color: #2b3a36;
+    padding: 20px;
+    color: white;
+}
+
+/* Cajas internas <article> */
+section.contacto article {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+section.contacto h2 {
+    display: inline-block;
+    border: 1px solid white;
+    padding: 5px 15px;
+    font-size: 16px;
+    margin: 0 10px 10px 0;
+}
+
+.redes-contacto {
+    display: inline-block;
+    border: 1px solid white;
+    padding: 5px;
+    font-size: 12px;
+}
+
+section.contacto p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   FOOTER (Bloque Negro Inferior)
+   ========================================== */
+footer {
+    background-color: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-top: 3px solid white;
+}
+
+.creditos {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 11px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.redes-footer {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    padding: 5px 15px;
+    margin-left: 10px;
+}
+
+.paint{
+    margin:20px;
+    padding:20px;
+    text-align:center;
+    background:#f5f5f5;
+    border:1px solid #ccc;
+}
+
+.paint canvas{
+    border:3px solid #000;
+    background:white;
+    cursor:crosshair;
+}
+
+.paint button{
+    margin-top:10px;
+    padding:10px 20px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.juego-online,
+.juego-codigo{
+
+    margin:20px;
+    padding:20px;
+    border:1px solid #ccc;
+    background:#f5f5f5;
+    text-align:center;
+
+}
+
+.juego-online iframe{
+
+    width:100%;
+    height:500px;
+    border:none;
+
+}
+
+.juego-codigo input{
+
+    padding:8px;
+    width:80px;
+
+}
+
+.juego-codigo button{
+
+    padding:8px 15px;
+    margin-left:10px;
+
+}
+
+.figura3d{
+    text-align:center;
+    margin:20px;
+}
+
+#figuraWebGL{
+    border:2px solid black;
+    background:#222;
+}

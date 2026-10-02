@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Position CSS</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* CONTENEDOR PRINCIPAL (RELATIVE) */
+.container{
+    width: 600px;
+    height: 350px;
+    border: 3px dashed black;
+    position: relative;
+    background: #f9f9f9;
+}
+
+/* CAJAS */
+.box{
+    width: 120px;
+    height: 70px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: black;
+}
+
+/* ESQUINAS */
+.top-left{
+    top: 30px;
+    left: 30px;
+    background: red;
+}
+
+.top-right{
+    top: 30px;
+    right: 30px;
+    background: orange;
+}
+
+.bottom-left{
+    bottom: 30px;
+    left: 30px;
+    background: yellow;
+}
+
+.bottom-right{
+    bottom: 30px;
+    right: 30px;
+    background: green;
+}
+
+/* CENTRO */
+.center{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: turquoise;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="box top-left">
+        top:0<br>left:0
+    </div>
+
+    <div class="box top-right">
+        top:0<br>right:0
+    </div>
+
+    <div class="box bottom-left">
+        bottom:0<br>left:0
+    </div>
+
+    <div class="box bottom-right">
+        bottom:0<br>right:0
+    </div>
+
+    <div class="box center">
+        center
+    </div>
+
+</div>
+
+</body>
+</html>

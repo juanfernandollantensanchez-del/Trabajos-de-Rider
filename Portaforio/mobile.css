@@ -1,0 +1,15 @@
+/* Este código viene dentro de la capa 'movil' gracias al @import */
+body {
+    background-color: #111827 !important; /* Fondo ultra oscuro */
+    color: #10B981; /* Letras verdes neón */
+}
+
+.menu-superior {
+    background-color: #065F46; /* Menú verde oscuro */
+}
+
+.tarjeta-proyecto {
+    background-color: #1F2937;
+    border: 2px solid #10B981; /* Borde neón */
+    color: white;
+}

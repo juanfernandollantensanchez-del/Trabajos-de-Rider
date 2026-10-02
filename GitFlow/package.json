@@ -1,0 +1,11 @@
+{
+ "name": "JUANFLOW",
+ "version": "1.0.0",
+ "type": "module",
+ "description": "Primera aplicacion Juan Flow",
+ "scripts": {
+ "start": "node src/app.js",
+ "test": "node test/app.test.js",
+ "build": "echo 'Paso omitir para produccion en node.js'"
+ }
+}

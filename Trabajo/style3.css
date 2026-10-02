@@ -1,0 +1,90 @@
+/* Limpieza de márgenes para ocupar toda la pantalla */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita que aparezcan barras de scroll */
+    background-color: #000;
+}
+
+/* 1. EL CIELO (Ocupa el 60% superior de la pantalla) */
+.cielo {
+    width: 100%;
+    height: 60%;
+    /* Degradado radial: empieza amarillo fuerte abajo en el centro y se va quitando/desvaneciendo hacia un naranja oscuro en los lados */
+    background: radial-gradient(circle at 50% 100%, #f3e156 0%, #e0de67 50%, #faaa2a 100%);
+    position: relative;
+    z-index: 1; /* Capa del fondo */
+}
+
+/* 2. EL SOL (Detrás del mar) */
+.sol {
+    width: 180px;
+    height: 180px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Se posiciona justo en el borde inferior del cielo para que el mar lo corte a la mitad */
+    bottom: -90px; 
+    z-index: 2; /* Por encima del fondo del cielo, pero debajo del mar */
+    
+    /* Múltiples capas de sombra para que brille con mucha más intensidad */
+    box-shadow: 
+        0 0 35px 15px rgba(255, 255, 255, 1),      
+        0 0 70px 30px rgba(255, 255, 255, 0.6),    
+        0 0 120px 50px rgba(243, 225, 86, 0.25);   
+}
+
+/* 3. EL MAR (Ocupa el 40% inferior de la pantalla) */
+.mar {
+    width: 100%;
+    height: 40%;
+    /* Colores menos azules. Ahora es un azul grisáceo y profundo que se aclara de forma más natural */
+    background: linear-gradient(to bottom, #4b9ef8 0%, #478cc0 60%, #477499 100%);
+    position: relative;
+    z-index: 3; /* ¡CLAVE! Al tener z-index: 3, pasa por delante del sol y lo corta limpiamente */
+    overflow: hidden; /* Mantiene el reflejo dentro de los límites del agua */
+}
+
+/* 4. EL REFLEJO EN EL MAR */
+.reflejo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px; /* Tamaño intermedio ideal para cubrir el ancho del sol */
+    height: 100%; /* Se extiende por todo el alto del mar */
+    
+    /* AJUSTADO: Ahora inicia con un blanco brillante (0.5) justo debajo del sol, 
+       pasa por un tono dorado suave de transición (#f3e156) y se desvanece por completo hacia los lados y abajo */
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.5) 0%, rgba(179, 178, 178, 0.25) 40%, transparent 75%);
+    
+    filter: blur(5px); /* Desenfoque equilibrado para que se note el brillo sin marcar bordes duros de sombra */
+    opacity: 0.8; /* Opacidad ideal para que sea visible sobre el color de tu mar */
+}
+
+/* 5. LA ARENA (Una franja al ras de la pantalla) */
+.arena {
+    width: 100%;
+    height: 12%; /* Altura de la playa */
+    
+    /* Ahora el degradado inicia con un color transparente texturizado 
+       para suavizar la transición con el agua, haciendo que la línea superior casi no se note */
+    background: linear-gradient(to bottom, rgba(255, 151, 6, 0.4) 0%, #b38c5a 40%, #b2925e 100%);
+    
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 4; /* Al frente de absolutamente todo */
+    
+    /* Cambiamos la sombra negra dura por un difuminado ligero (blur) 
+       que suaviza los bordes del contenedor con el fondo del agua */
+    filter: blur(1.5px);
+}

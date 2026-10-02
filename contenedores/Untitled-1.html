@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Position Fixed Mejorado</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    height: 2000px; /* para poder hacer scroll */
+    margin: 0;
+}
+
+/* CAJA FIJA MEJORADA */
+.fixed-box{
+    width: 220px; /* La hacemos un poco más ancha para que quepa el contenido */
+    padding: 15px; /* Espacio interno */
+    background: crimson;
+    color: white;
+    
+    /* Centramos el contenido verticalmente en columna */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espacio entre los elementos de adentro */
+
+    /* Propiedades de fijación */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    
+    /* Transición suave para cuando pasemos el mouse */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Efecto al pasar el mouse por encima (Hover) */
+.fixed-box:hover {
+    background: #b3092b; /* Un rojo un poco más oscuro */
+    transform: scale(1.02); /* Se agranda ligeramente */
+}
+
+/* Estilos para los nuevos elementos de la caja */
+.fixed-box h3 {
+    margin: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.fixed-box p {
+    margin: 0;
+    font-size: 13px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.fixed-box .btn {
+    background: white;
+    color: crimson;
+    border: none;
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.fixed-box .btn:hover {
+    background: #ffdf00; /* Cambia a amarillo al pasar el mouse */
+    color: #333;
+}
+
+/* CONTENIDO PARA HACER SCROLL */
+.content{
+    padding: 30px;
+}
+
+.section{
+    height: 400px;
+    margin-bottom: 20px;
+    background: #f2f2f2;
+    border: 2px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="fixed-box">
+    <h3>Menú Fijo</h3>
+    <p>Este panel no se mueve al bajar la página.</p>
+    <button class="btn" onclick="alert('¡Hiciste clic en el botón fijo!')">Acción 1</button>
+    <a href="https://google.com" target="_blank" class="btn">Ir a Google</a>
+</div>
+
+<div class="content">
+
+    <div class="section">Sección 1</div>
+    <div class="section">Sección 2</div>
+    <div class="section">Sección 3</div>
+    <div class="section">Sección 4</div>
+    <div class="section">Sección 5</div>
+
+</div>
+
+</body>
+</html>

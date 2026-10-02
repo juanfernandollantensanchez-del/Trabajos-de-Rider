@@ -1,0 +1,165 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f5f5f5;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+h1{
+    text-align:center;
+    margin-top:20px;
+    font-size:60px;
+}
+
+.contenedor{
+    position:relative;
+    width:1100px;
+    height:650px;
+    margin:auto;
+}
+
+/* CARTAS */
+
+.carta{
+    position:absolute;
+    width:150px;
+    height:220px;
+    background:white;
+    border:4px solid #41225c;
+    border-radius:5px;
+    box-shadow:4px 4px 12px rgba(0,0,0,.25);
+}
+
+/* POSICIONES */
+
+.carta1{
+    top:60px;
+    left:120px;
+    z-index:1;
+}
+
+.carta2{
+    top:100px;
+    left:190px;
+    z-index:2;
+}
+
+.carta3{
+    top:140px;
+    left:260px;
+    z-index:3;
+}
+
+.carta4{
+    top:180px;
+    left:330px;
+    z-index:4;
+}
+
+.carta5{
+    top:220px;
+    left:400px;
+    z-index:5;
+}
+
+/* ESQUINAS */
+
+.esquina{
+    position:absolute;
+    color:#c4002f;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.superior{
+    top:6px;
+    left:8px;
+}
+
+.inferior{
+    bottom:6px;
+    right:8px;
+    transform:rotate(180deg);
+}
+
+/* CARTA 10 */
+
+.diamante{
+    position:absolute;
+    color:#c4002f;
+    font-size:24px;
+}
+
+.d1{top:25px;left:25px;}
+.d2{top:25px;right:25px;}
+
+.d3{top:60px;left:25px;}
+.d4{top:60px;right:25px;}
+
+.d5{top:90px;left:62px;}
+.d6{top:120px;left:62px;}
+
+.d7{bottom:60px;left:25px;}
+.d8{bottom:60px;right:25px;}
+
+.d9{bottom:25px;left:25px;}
+.d10{bottom:25px;right:25px;}
+
+/* J Q K */
+
+.figura{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:95px;
+    color:#c4002f;
+}
+
+/* AS */
+
+.as{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:110px;
+    color:#c4002f;
+}
+
+/* TEXTOS */
+
+.texto{
+    position:absolute;
+    font-size:30px;
+    color:#555;
+}
+
+.texto1{
+    top:90px;
+    left:620px;
+}
+
+.texto2{
+    top:140px;
+    left:680px;
+}
+
+.texto3{
+    top:190px;
+    left:740px;
+}
+
+.texto4{
+    top:240px;
+    left:800px;
+}
+
+.texto5{
+    top:290px;
+    left:860px;
+}

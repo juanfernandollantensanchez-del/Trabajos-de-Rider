@@ -1,0 +1,128 @@
+/* --- ESTILOS DE TEXTO --- */
+
+/* Etiqueta P pura: ROJO */
+p {
+    color: #E74C3C; 
+    font-family: Avenir, sans-serif;
+}
+
+/* Clase .my-class: AZUL */
+.my-class {
+    color: #2980B9;
+    font-family: Avenir, sans-serif;
+}
+
+/* ID #my-id: VERDE BOSQUE */
+#my-id {
+    color: #1B5E20;
+    font-family: Courier, monospace;
+}
+
+/* Combinación: Párrafo dentro de DIV: MORADO */
+div p {
+    color: #8E44AD;
+    font-family: Avenir, sans-serif;
+}
+
+/* Clase nueva para el botón: NARANJA QUEMADO */
+.btn-color {
+    color: #D35400;
+    font-family: Avenir, sans-serif;
+    border: 1px solid #D35400;
+    background: transparent;
+}
+
+/* Clase para el último párrafo: GRIS OSCURO */
+.p-final {
+    color: #2C3E50;
+    font-weight: bold;
+}
+
+/* --- ESTILOS DE FONDOS (DIVS) --- */
+
+/* ID #first: FONDO AMARILLO MOSTAZA */
+#first {
+    background-color: #F1C40F;
+    color: #000;
+    width: auto;
+    font-family: Arial;
+}
+
+/* ID #second: FONDO TURQUESA (Tu original) */
+#second {
+    background-color: #19A5BD;
+    color: white;
+    width: 200px;
+    font-family: "Times New Roman", serif;
+}
+
+/* ID #third: FONDO ROSA SALMÓN (Tu original) */
+#third {
+    background-color: rgb(253, 143, 89);
+    color: #fff;
+    width: 250px;
+    font-family: Courier, monospace;
+}
+
+/* Configuración general de los contenedores */
+div {
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+pre{
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+}
+
+sup{
+    vertical-align: super;
+    font-size: smaller;
+}
+
+ul{
+    display: block;
+    list-style-type: disc;
+    margin-inline: 1em;
+    margin-inline: 1em;
+    marker-start: 0;
+    marker-end: 0;
+    padding-right: 40px;
+}
+
+
+ol{
+    display: block;
+    list-style-type: decimal;
+    margin-bottom: 1em;
+    margin-bottom: 1em;
+    margin-right: 0;
+    marker-end: 0;
+    padding-bottom: 40px;
+}
+
+.instructions{
+    position: relative;
+    top: 1.6em;
+    display: block;
+}
+
+.instructions-container{
+    margin-bottom: 2em;
+}
+
+.instructions-container label{
+    margin-bottom: -1.2em;
+}
+
+.hidden{
+    position: absolute;
+    left: 10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

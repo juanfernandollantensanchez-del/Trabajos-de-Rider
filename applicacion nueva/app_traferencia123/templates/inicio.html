@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Transferencia</title>
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>GET y POST con Django Forms</h1>
+
+        <div class="cards-grid">
+            <section class="card get-card">
+                <h2>Petición GET</h2>
+                <form method="GET" action="{% url 'transferencia' %}">
+                    {{ form_get.dato }}
+                    <button type="submit" class="btn-get">Enviar vía GET</button>
+                </form>
+            </section>
+
+            <section class="card post-card">
+                <h2>Petición POST</h2>
+                <form method="POST" action="{% url 'transferencia' %}">
+                    {% csrf_token %}
+                    {{ form_post.dato }}
+                    <button type="submit" class="btn-post">Enviar vía POST</button>
+                </form>
+            </section>
+        </div>
+
+        <section class="resultado">
+            <h2>Resultado</h2>
+            {% if resultados %}
+                <p>{{ resultados|safe }}</p>
+            {% else %}
+                <p style="color: var(--text-muted);">No se ha enviado ningún dato aún.</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>

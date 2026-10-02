@@ -1,0 +1,583 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evacuación Code Rider</title>
+
+    <link
+      rel="icon"
+      href="{% static 'imagenes/sistemas/favicon.ico' %}"
+    />
+    <link rel="manifest" href="{% static 'pwa/manifest.json' %}" />
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}" />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="nav-contenedor">
+        <a href="{% url 'evacuacion' %}" class="nav-logo">
+          coderider
+        </a>
+
+        <ul class="nav-menu">
+          <li>
+            <a
+              href="{% url 'evacuacion' %}"
+              class="nav-enlace-activo"
+            >
+              generalidad coderider
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-enlace">
+              panel coderider
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <header>
+      <h1>Evacuación Code Rider</h1>
+    </header>
+
+    <main>
+      <!-- Imágenes -->
+      <section class="tarjeta">
+        <h2>Imágenes</h2>
+
+        <img
+          src="{% static 'imagenes/fotos/4.jpg' %}"
+          width="250"
+          alt="Foto 4"
+        />
+
+        <img
+          src="{% static 'imagenes/fotos/7.jpg' %}"
+          width="250"
+          alt="Foto 7"
+        />
+      </section>
+
+      <!-- Video -->
+      <section class="tarjeta">
+        <h2>Video CodeRider</h2>
+
+        <video width="100%" controls>
+          <source
+            src="{% static 'videos/clips/KOCMOC UNLEASHED.mp4' %}"
+            type="video/mp4"
+          />
+
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </section>
+
+      <!-- Audios -->
+      <section class="tarjeta">
+        <h2>Audios CodeRider</h2>
+
+        <!-- Audio 1 -->
+        <h3>Audio CodeRider 1</h3>
+
+        <audio controls preload="auto">
+          <source
+            src="{% static 'audios/alertas/audio1.mp3' %}"
+            type="audio/mpeg"
+          />
+
+          Tu navegador no soporta el reproductor de audio.
+        </audio>
+
+        <!-- Audio 2 -->
+        <h3>Audio CodeRider 2</h3>
+
+        <audio controls preload="auto">
+          <source
+            src="{% static 'audios/alertas/audio2.mp3' %}"
+            type="audio/mpeg"
+          />
+
+          Tu navegador no soporta el reproductor de audio.
+        </audio>
+
+        <!-- Audio 3 -->
+        <h3>Audio CodeRider 3</h3>
+
+        <audio controls preload="auto">
+          <source
+            src="{% static 'audios/alertas/audio3.mp3' %}"
+            type="audio/mpeg"
+          />
+
+          Tu navegador no soporta el reproductor de audio.
+        </audio>
+      </section>
+
+      <!-- Documentos -->
+      <section class="tarjeta">
+        <h2>Documentos y Datos CodeRider</h2>
+
+        <a
+          href="{% static 'documentos/pdf/plan_evacuacion.pdf' %}"
+          target="_blank"
+        >
+          PDF Documento
+        </a>
+
+        <a
+          href="{% static 'documentos/pdf/plan_evacuacion.zip' %}"
+          target="_blank"
+        >
+          ZIP Documento
+        </a>
+
+        <a
+          href="{% static 'documentos/pdf/plan_evacuacion.csv' %}"
+          target="_blank"
+        >
+          CSV Documento
+        </a>
+
+        <a
+          href="{% static 'documentos/pdf/plan_evacuacion.gps' %}"
+          target="_blank"
+        >
+          GPS Documento
+        </a>
+      </section>
+
+      <!-- Formulario -->
+      <section class="tarjeta">
+        <h2>Subir Archivos CodeRider</h2>
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          {{ form.as_p }}
+
+          <button type="submit">
+            Enviar Reporte
+          </button>
+        </form>
+      </section>
+
+      <!-- Reportes recibidos -->
+      <section class="tarjeta">
+        <h2>Reportes recibidos CodeRider</h2>
+
+        {% for r in reportes %}
+        <div
+          class="reportes"
+          style="
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #334155;
+          "
+        >
+          {% if r.foto %}
+          <img
+            src="{{ r.foto.url }}"
+            width="150"
+            alt="Foto del reporte"
+          />
+          {% endif %}
+
+          <p>
+            <strong>{{ r.nombre }}</strong>:
+            {{ r.descripcion }}
+          </p>
+
+          <p>
+            Fecha: {{ r.fecha|date:"d/m/Y H:i" }}
+          </p>
+
+          {% if r.documento %}
+          <a
+            href="{{ r.documento.url }}"
+            target="_blank"
+          >
+            Ver documento
+          </a>
+          {% endif %}
+        </div>
+
+        {% empty %}
+        <p>No hay reportes registrados aún.</p>
+        {% endfor %}
+      </section>
+
+      <!-- Mapa -->
+      <section class="tarjeta">
+        <h2>
+          Mapa de Evacuación y Monitoreo Sísmico CodeRider
+        </h2>
+
+        <!-- CAJA 1: RUTAS -->
+        <div
+          style="
+            background-color: #1e293b;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+          "
+        >
+          <h3
+            style="
+              margin-top: 0;
+              color: #10b981;
+              font-size: 1.1rem;
+            "
+          >
+            1. Selección y Trazado de Ruta
+          </h3>
+
+          <label
+            for="select-rutas"
+            style="
+              display: block;
+              margin-bottom: 8px;
+              font-weight: bold;
+            "
+          >
+            Selecciona una Ruta Predefinida:
+          </label>
+
+          <select
+            id="select-rutas"
+            style="
+              width: 100%;
+              padding: 10px;
+              border-radius: 5px;
+              border: 1px solid #cbd5e1;
+              font-size: 1rem;
+              color: #0f172a;
+              background-color: #ffffff;
+              margin-bottom: 12px;
+              cursor: pointer;
+            "
+          ></select>
+
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              margin-bottom: 12px;
+              flex-wrap: wrap;
+            "
+          >
+            <div style="flex: 1; min-width: 180px">
+              <label
+                for="coord-origen"
+                style="font-size: 0.85rem"
+              >
+                Origen (Latitud, Longitud):
+              </label>
+
+              <input
+                type="text"
+                id="coord-origen"
+                placeholder="Ej: 2.4419, -76.6063"
+                style="
+                  width: 100%;
+                  padding: 6px;
+                  border-radius: 4px;
+                  border: 1px solid #cbd5e1;
+                  background-color: #334155;
+                  color: #fff;
+                  box-sizing: border-box;
+                "
+              />
+            </div>
+
+            <div style="flex: 1; min-width: 180px">
+              <label
+                for="coord-destino"
+                style="font-size: 0.85rem"
+              >
+                Destino (Latitud, Longitud):
+              </label>
+
+              <input
+                type="text"
+                id="coord-destino"
+                placeholder="Ej: 2.4448, -76.6147"
+                style="
+                  width: 100%;
+                  padding: 6px;
+                  border-radius: 4px;
+                  border: 1px solid #cbd5e1;
+                  background-color: #334155;
+                  color: #fff;
+                  box-sizing: border-box;
+                "
+              />
+            </div>
+          </div>
+
+          <button
+            id="btn-trazar-seleccion"
+            class="btn-mapa btn-verde"
+            style="
+              background-color: #10b981;
+              border: none;
+              cursor: pointer;
+              padding: 10px 18px;
+              border-radius: 5px;
+              color: white;
+              font-weight: bold;
+            "
+          >
+            Trazar Ruta en el Mapa
+          </button>
+        </div>
+
+        <!-- CAJA 2: SISMOS -->
+        <div
+          style="
+            background-color: #1e293b;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+          "
+        >
+          <h3
+            style="
+              margin-top: 0;
+              color: #eab308;
+              font-size: 1.1rem;
+            "
+          >
+            2. Monitor de Puntos de Sismo
+          </h3>
+
+          <p
+            style="
+              font-size: 0.9rem;
+              margin-bottom: 10px;
+              color: #cbd5e1;
+            "
+          >
+            Carga los eventos sísmicos recientes reportados en
+            tiempo real.
+          </p>
+
+          <button
+            id="btn-sismos"
+            class="btn-mapa"
+            style="
+              background-color: #eab308;
+              color: black;
+              border: none;
+              cursor: pointer;
+              padding: 10px 18px;
+              border-radius: 5px;
+              font-weight: bold;
+            "
+          >
+            Mostrar Puntos de Sismo
+          </button>
+
+          <span
+            id="estado-sismos"
+            style="
+              margin-left: 10px;
+              font-size: 0.9rem;
+              color: #38bdf8;
+            "
+          ></span>
+        </div>
+
+        <div style="margin-bottom: 10px; text-align: right">
+          <button
+            id="btn-limpiar"
+            class="btn-mapa"
+            style="
+              background-color: #ef4444;
+              color: white;
+              border: none;
+              cursor: pointer;
+              padding: 8px 15px;
+              border-radius: 5px;
+            "
+          >
+            Limpiar Mapa
+          </button>
+        </div>
+
+        <div
+          id="mapa"
+          style="height: 400px; width: 100%; border-radius: 8px"
+        ></div>
+      </section>
+
+      <!-- Puntos en mapa -->
+      <section class="tarjeta">
+        <h2>Puntos en mapa CodeRider</h2>
+
+        <p id="info-institucion"></p>
+
+        <div class="botonera">
+          <button
+            id="btn-puntos"
+            class="btn-mapa btn-azul"
+          >
+            Mostrar ruta punto en el mapa CodeRider
+          </button>
+        </div>
+
+        <div
+          id="lista-puntos"
+          class="lista-puntos"
+        ></div>
+      </section>
+
+      <!-- TABLA DE VERIFICACIÓN DE RELACIONES EN VIVO -->
+<section class="tarjeta" style="margin-top: 2rem;">
+  <h2>Visualizador de Relaciones de Base de Datos CodeRider</h2>
+  
+  <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 1rem;">
+    Esta tabla demuestra las relaciones activas sobre tu modelo base <code>Reporte</code>:
+  </p>
+
+  <!-- Leyenda explicativa -->
+  <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+    <span style="background-color: #0369a1; color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.85rem;">
+      <strong>1 a 1:</strong> 1 Reporte = 1 Detalle de Evaluación
+    </span>
+    <span style="background-color: #047857; color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.85rem;">
+      <strong>1 a M:</strong> 1 Reporte = Múltiples Comentarios de Seguimiento
+    </span>
+    <span style="background-color: #a16207; color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.85rem;">
+      <strong>M a M:</strong> Múltiples Equipos asignados a Múltiples Reportes
+    </span>
+  </div>
+
+  <div style="overflow-x: auto;">
+    <table style="width: 100%; border-collapse: collapse; background-color: #0f172a; color: white; border-radius: 8px; overflow: hidden;">
+      <thead>
+        <tr style="background-color: #1e293b; text-align: left; border-bottom: 2px solid #334155;">
+          <th style="padding: 12px;">Modelo Base (Reporte)</th>
+          <th style="padding: 12px; color: #38bdf8;">1 a 1 (Detalle Único)</th>
+          <th style="padding: 12px; color: #34d399;">1 a Mucho (Seguimientos)</th>
+          <th style="padding: 12px; color: #facc15;">Muchos a Muchos (Equipos)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in reportes %}
+        <tr style="border-bottom: 1px solid #334155;">
+          
+          <!-- MODELO BASE -->
+          <td style="padding: 12px; vertical-align: top;">
+            <strong style="font-size: 1.05rem; color: #f8fafc;">{{ r.nombre }}</strong><br>
+            <small style="color: #94a3b8;">{{ r.descripcion }}</small><br>
+            <small style="color: #64748b;">📅 {{ r.fecha|date:"d/m/Y H:i" }}</small>
+          </td>
+
+          <!-- 1 A 1 (DetalleReporte) -->
+          <td style="padding: 12px; vertical-align: top; background-color: rgba(56, 189, 248, 0.05);">
+            {% if r.detalle %}
+              <div style="border-left: 3px solid #38bdf8; padding-left: 8px;">
+                <span style="display: inline-block; background-color: #0284c7; padding: 2px 6px; border-radius: 3px; font-size: 0.75rem;">
+                  Prioridad: {{ r.detalle.prioridad }}
+                </span>
+                <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #e2e8f0;">
+                  Estado: <strong>{{ r.detalle.estado }}</strong>
+                </p>
+              </div>
+            {% else %}
+              <span style="color: #64748b; font-size: 0.85rem; italic;">Sin registro 1:1 asignado</span>
+            {% endif %}
+          </td>
+
+          <!-- 1 A MUCHOS (SeguimientoReporte) -->
+          <td style="padding: 12px; vertical-align: top; background-color: rgba(52, 211, 153, 0.05);">
+            {% if r.seguimientos.all %}
+              <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+                {% for s in r.seguimientos.all %}
+                  <li style="margin-bottom: 4px; color: #e2e8f0;">
+                    {{ s.comentario }}
+                  </li>
+                {% endfor %}
+              </ul>
+              <small style="color: #34d399; font-size: 0.75rem;">Total: {{ r.seguimientos.all|length }} registros</small>
+            {% else %}
+              <span style="color: #64748b; font-size: 0.85rem; italic;">Sin seguimientos 1:M</span>
+            {% endif %}
+          </td>
+
+          <!-- MUCHOS A MUCHOS (EquipoRescate) -->
+          <td style="padding: 12px; vertical-align: top; background-color: rgba(250, 204, 21, 0.05);">
+            {% if r.equipos.all %}
+              <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                {% for eq in r.equipos.all %}
+                  <span style="background-color: #854d0e; color: #fef08a; padding: 3px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">
+                    🛡️ {{ eq.nombre_equipo }}
+                  </span>
+                {% endfor %}
+              </div>
+            {% else %}
+              <span style="color: #64748b; font-size: 0.85rem; italic;">Sin equipos M:M asignados</span>
+            {% endif %}
+          </td>
+
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" style="padding: 20px; text-align: center; color: #94a3b8;">
+            No hay reportes registrados para mostrar la tabla de relaciones.
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+      const CSRF_TOKEN = "{{ csrf_token }}";
+
+      const CSRF_CSV =
+        "{% static 'datos/tablas/extintores.csv' %}";
+
+      const CSRF_GEO =
+        "{% static 'datos/geo/ruta.geojson' %}";
+
+      const URL_JSON =
+        "{% static 'datos/json/puntos_encuentro.json' %}";
+    </script>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+    <script
+      src="{% static 'scripts/mapa.js' %}?v=2"
+    ></script>
+
+    <script
+      src="{% static 'scripts/puntos_encuentro.js' %}?v=2"
+    ></script>
+
+    <script
+      src="{% static 'scripts/tabla_csv.js' %}?v=2"
+    ></script>
+
+    <script
+      src="{% static 'scripts/sismos_api.js' %}?v=2"
+    ></script>
+  </body>
+</html>

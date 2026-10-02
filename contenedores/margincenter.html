@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Botón Completamente Centrado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* El contenedor debe ocupar toda la pantalla */
+        .pantalla-completa {
+            width: 100vw;
+            height: 100vh;
+            background-color: #0f172a; /* Fondo oscuro elegante */
+            
+            /* Activamos Flexbox en el padre para que margin: auto funcione en 360° */
+            display: flex; 
+        }
+
+        /* El Botón */
+        .boton-centrado {
+            /* EL TRUCO MÁGICO: Al estar dentro de un Flexbox, 
+               "auto" distribuye el espacio libre arriba, abajo, izquierda y derecha */
+            margin: auto; 
+
+            /* Estilos estéticos del botón */
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Efecto al pasar el mouse */
+        .boton-centrado:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5);
+        }
+
+        .boton-centrado:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pantalla-completa">
+        <button class="boton-centrado">¡Hazme Click!</button>
+    </div>
+
+</body>
+</html>

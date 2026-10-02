@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha ADSO {{ ficha }}</title>
+</head>
+<body>
+    <h1>Lista de Evaluaciones - Ficha ADSO {{ ficha }}</h1>
+
+    <ul>
+        {% for item in evaluacion %}
+            <li><strong>{{ item.nombre }}</strong> - Nota: {{ item.nota }}</li>
+        {% empty %}
+            <li>No hay evaluaciones disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

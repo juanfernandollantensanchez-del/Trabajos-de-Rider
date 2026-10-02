@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Memoria Selección Colombia</title>
+
+<style>
+body{
+    font-family:Arial;
+    text-align:center;
+    margin:0;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
+}
+
+h1{
+    margin-top:15px;
+}
+
+/* JUGADORES */
+.players{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:10px;
+}
+
+.player{
+    background:rgba(255,255,255,0.15);
+    padding:10px;
+    border-radius:10px;
+    width:170px;
+    transition:0.3s;
+}
+
+.player.active{
+    border:3px solid yellow;
+    transform:scale(1.05);
+}
+
+.player img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid white;
+}
+
+/* TIMER */
+.timer{
+    margin-top:10px;
+    font-size:18px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,90px);
+    gap:10px;
+    justify-content:center;
+    margin-top:20px;
+}
+
+/* CARTAS */
+.card{
+    width:90px;
+    height:90px;
+    perspective:600px;
+    cursor:pointer;
+}
+
+.inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform 0.5s;
+}
+
+.card.flip .inner{
+    transform:rotateY(180deg);
+}
+
+.front, .back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:8px;
+    backface-visibility:hidden;
+    overflow:hidden;
+}
+
+.front{
+    background:#222;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+}
+
+.back{
+    transform:rotateY(180deg);
+}
+
+.back img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.removed{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🇨🇴 MEMORIA SELECCIÓN COLOMBIA 🇨🇴</h1>
+
+<div class="players">
+    <div id="p1" class="player active">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnJJhBX65i8--h7U20L-6-uc3HOnbhxsXf4O-G6Xi_8sMSUSEwzRbWdAw&s=10">
+        <div>Jugador 1</div>
+        <div>Puntos: <span id="score1">0</span></div>
+    </div>
+
+    <div id="p2" class="player">
+        <img src="https://imagenes.elpais.com/resizer/v2/6E52F3AY4NHANIGN3F3FNK3C5A.jpg?auth=6c70b14c981c0781eb3987cf8c60df3510c7a21387a9848dfcad52d78a513c9a&width=1960&height=1470&smart=true">
+        <div>Jugador 2</div>
+        <div>Puntos: <span id="score2">0</span></div>
+    </div>
+</div>
+
+<div class="timer">
+⏱️ Tiempo: <span id="time">0</span>s
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+
+const cardsData = [
+{
+player:"A",
+img:"https://www.futbolred.com/files/image_800_600/uploads/2024/06/23/6678f9f2e291f.jpeg"
+},
+{
+player:"B",
+img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjMlsXgIau8PnNDQLppKr3J6P9GuFMh_ywv3lA-QQcbUrtRddqwOCrCU-6UmZPfKE_o7O4-AJgwHcHSewKgK0_KVCfrrPMNLnFZd_pNA&s=10"
+},
+{
+player:"C",
+img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKaiFFJ1NdFsLmUd6no4qwKFzKFIfi4V8groHGpRgDDyUobThWSNQ99pYbfB3-ugWpgKz_bprxFpc2CBH8ejfEy1swIQI47r73tExAtw&s=10"
+},
+{
+player:"D",
+img:"https://www.clarin.com/2025/04/04/nxLFIJeb__2000x1500__1.jpg"
+},
+{
+player:"A",
+img:"https://www.futbolred.com/files/image_800_600/uploads/2024/06/23/6678f9f2e291f.jpeg"
+},
+{
+player:"B",
+img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjMlsXgIau8PnNDQLppKr3J6P9GuFMh_ywv3lA-QQcbUrtRddqwOCrCU-6UmZPfKE_o7O4-AJgwHcHSewKgK0_KVCfrrPMNLnFZd_pNA&s=10"
+},
+{
+player:"C",
+img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKaiFFJ1NdFsLmUd6no4qwKFzKFIfi4V8groHGpRgDDyUobThWSNQ99pYbfB3-ugWpgKz_bprxFpc2CBH8ejfEy1swIQI47r73tExAtw&s=10"
+},
+{
+player:"D",
+img:"https://www.clarin.com/2025/04/04/nxLFIJeb__2000x1500__1.jpg"
+}
+];
+
+cardsData.sort(()=>Math.random()-0.5);
+
+const grid=document.getElementById("grid");
+
+let first=null;
+let second=null;
+let lock=false;
+
+let player=1;
+let score1=0;
+let score2=0;
+let time=0;
+
+setInterval(()=>{
+    time++;
+    document.getElementById("time").textContent=time;
+},1000);
+
+function updateUI(){
+    document.getElementById("p1").classList.toggle("active",player===1);
+    document.getElementById("p2").classList.toggle("active",player===2);
+}
+
+function addScore(){
+    if(player===1){
+        score1++;
+        document.getElementById("score1").textContent=score1;
+    }else{
+        score2++;
+        document.getElementById("score2").textContent=score2;
+    }
+}
+
+function switchPlayer(){
+    player = player===1 ? 2 : 1;
+    updateUI();
+}
+
+function reset(){
+    first=null;
+    second=null;
+    lock=false;
+}
+
+cardsData.forEach(data=>{
+
+    const card=document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML=`
+        <div class="inner">
+            <div class="front">🇨🇴</div>
+            <div class="back"><img src="${data.img}"></div>
+        </div>
+    `;
+
+    card.dataset.player=data.player;
+
+    grid.appendChild(card);
+
+    card.addEventListener("click",()=>{
+
+        if(lock) return;
+        if(card.classList.contains("removed")) return;
+        if(card===first) return;
+
+        card.classList.add("flip");
+
+        if(!first){
+            first=card;
+            return;
+        }
+
+        second=card;
+        lock=true;
+
+        if(first.dataset.player===second.dataset.player){
+
+            setTimeout(()=>{
+                first.classList.add("removed");
+                second.classList.add("removed");
+                addScore();
+                reset();
+            },600);
+
+        }else{
+
+            setTimeout(()=>{
+                first.classList.remove("flip");
+                second.classList.remove("flip");
+                switchPlayer();
+                reset();
+            },900);
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>

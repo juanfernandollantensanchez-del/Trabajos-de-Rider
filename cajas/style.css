@@ -1,0 +1,658 @@
+body{
+    background: #ececec;
+    font-family: Arial, sans-serif;
+}
+
+.contenedor{
+    width: 350px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* ==========================
+   CAJAS DE TEXTO
+========================== */
+.caja{
+    width: 100%;
+    padding: 15px;
+    border-radius: 18px;
+    border: 3px solid;
+    outline: none;
+    font-size: 17px;
+    background: white;
+    transition: 0.4s;
+    box-shadow: 0px 5px 12px rgba(0,0,0,0.12);
+}
+
+.caja1{
+    border-color: #8e44ad;
+}
+
+.caja2{
+    border-color: #3498db;
+}
+
+.caja3{
+    border-color: #16a085;
+}
+
+.caja:hover{
+    transform: scale(1.03);
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.2);
+}
+
+.caja:focus{
+    background: #fafafa;
+}
+
+/* ==========================
+   BOTONES
+========================== */
+.boton{
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+    border-radius: 18px;
+    background: white;
+    border: 3px solid white;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.boton1{
+    color: #e74c3c;
+    box-shadow: 0px 8px 0px #c0392b;
+}
+
+.boton2{
+    color: #3498db;
+    box-shadow: 0px 8px 0px #21618c;
+}
+
+.boton3{
+    color: #27ae60;
+    box-shadow: 0px 8px 0px #1e8449;
+}
+
+.boton:hover{
+    transform: translateY(-4px);
+}
+
+.boton:active{
+    transform: translateY(5px);
+    box-shadow: 0px 2px 0px rgba(0,0,0,0.2);
+}
+
+/* ==========================
+   BOTÓN DE APAGADO
+========================== */
+.power-button{
+    width: 140px;
+    height: 140px;
+    background: white;
+    border-radius: 50%;
+    border: 8px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    box-shadow:
+    10px 10px 20px rgba(0,0,0,0.15),
+    -10px -10px 20px rgba(255,255,255,0.9);
+
+    transition: 0.2s;
+}
+
+.power-logo{
+    width: 60px;
+    height: 60px;
+    border: 8px solid #7a7a7a;
+    border-top: transparent;
+    border-radius: 50%;
+    position: relative;
+}
+
+.power-logo::before{
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 38px;
+    background: #7a7a7a;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.power-button:hover{
+    transform: scale(1.08);
+}
+
+.power-button:active{
+    transform: scale(0.95);
+
+    box-shadow:
+    inset 8px 8px 15px rgba(0,0,0,0.12),
+    inset -8px -8px 15px rgba(255,255,255,0.9);
+}
+
+/* ==========================
+   SEMÁFORO SOLO CSS
+========================== */
+.semaforo{
+    width: 120px;
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+
+    border: 4px solid #444;
+
+    box-shadow:
+    10px 10px 20px rgba(0,0,0,0.25),
+    -5px -5px 10px rgba(255,255,255,0.2);
+}
+
+/* Luces */
+.luz{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 4px solid rgba(255,255,255,0.2);
+}
+
+/* Colores apagados */
+.rojo{
+    background: #4d0000;
+}
+
+.amarillo{
+    background: #5c5000;
+}
+
+.verde{
+    background: #003d1f;
+}
+
+/* Hover elegante */
+.luz:hover{
+    transform: scale(1.08);
+}
+
+/* Presionado */
+.luz:active{
+    transform: scale(0.92);
+}
+
+/* EFECTOS DE LUZ */
+.rojo:hover,
+.rojo:active{
+    background: red;
+    box-shadow:
+    0px 0px 20px red,
+    0px 0px 40px rgba(255,0,0,0.8),
+    0px 0px 60px rgba(255,0,0,0.5);
+}
+
+.amarillo:hover,
+.amarillo:active{
+    background: yellow;
+    box-shadow:
+    0px 0px 20px yellow,
+    0px 0px 40px rgba(255,255,0,0.8),
+    0px 0px 60px rgba(255,255,0,0.5);
+}
+
+.verde:hover,
+.verde:active{
+    background: limegreen;
+    box-shadow:
+    0px 0px 20px limegreen,
+    0px 0px 40px rgba(50,205,50,0.8),
+    0px 0px 60px rgba(50,205,50,0.5);
+}
+
+/* ==========================
+   BOX SHADOW VS DROP SHADOW
+========================== */
+.sombras{
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Caja base */
+.caja-shadow{
+    width: 150px;
+    height: 150px;
+    background: white;
+    border-radius: 20px;
+    border: 3px solid #ddd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+/* Caja con BOX SHADOW */
+.box-shadow{
+    border-color: #3498db;
+
+    box-shadow:
+    12px 12px 20px rgba(0,0,0,0.25);
+}
+
+.box-shadow:hover{
+    transform: translateY(-10px);
+
+    box-shadow:
+    0px 0px 20px rgba(52,152,219,0.6),
+    0px 0px 40px rgba(52,152,219,0.4);
+}
+
+/* Caja con DROP SHADOW */
+.drop-shadow{
+    border-color: #e74c3c;
+
+    filter:
+    drop-shadow(12px 12px 15px rgba(0,0,0,0.35));
+}
+
+.drop-shadow:hover{
+    transform: scale(1.08);
+
+    filter:
+    drop-shadow(0px 0px 20px rgba(231,76,60,0.8));
+}
+
+/* ==========================
+   TEXT SHADOW JUAN
+========================== */
+
+/* 1. Sombra elegante */
+.juan1{
+    text-align: center;
+    font-size: 60px;
+    color: #2c3e50;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+}
+
+/* 2. Neon azul */
+.juan2{
+    text-align: center;
+    font-size: 60px;
+    color: white;
+    text-shadow:
+    0px 0px 5px #3498db,
+    0px 0px 10px #3498db,
+    0px 0px 20px #3498db;
+}
+
+/* 3. Efecto 3D */
+.juan3{
+    text-align: center;
+    font-size: 60px;
+    color: #e74c3c;
+    text-shadow:
+    2px 2px 0px #c0392b,
+    4px 4px 0px #922b21,
+    6px 6px 10px rgba(0,0,0,0.3);
+}
+
+/* 4. Morado elegante */
+.juan4{
+    text-align: center;
+    font-size: 60px;
+    color: #8e44ad;
+    text-shadow:
+    2px 2px 5px rgba(0,0,0,0.3),
+    0px 0px 15px rgba(142,68,173,0.5);
+}
+
+/* 5. Verde brillante */
+.juan5{
+    text-align: center;
+    font-size: 60px;
+    color: #27ae60;
+    text-shadow:
+    0px 0px 10px limegreen,
+    0px 0px 20px limegreen,
+    0px 0px 35px rgba(50,205,50,0.8);
+}
+
+/* ==========================
+   BOX SHADOW INSET + RGBA
+========================== */
+.caja-inset{
+    width: 250px;
+    height: 120px;
+    background: white;
+    border-radius: 20px;
+    border: 3px solid #3498db;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    font-weight: bold;
+    color: #2c3e50;
+
+    transition: 0.4s;
+    cursor: pointer;
+
+    /* sombra interior */
+    box-shadow:
+    inset 0px 0px 20px rgba(52,152,219,0.4),
+    inset 5px 5px 15px rgba(0,0,0,0.15),
+    0px 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Hover */
+.caja-inset:hover{
+    transform: scale(1.05);
+
+    box-shadow:
+    inset 0px 0px 30px rgba(52,152,219,0.7),
+    inset 5px 5px 20px rgba(0,0,0,0.25),
+    0px 0px 20px rgba(52,152,219,0.4);
+}
+
+
+/* ==========================
+   CONTENEDOR CON IMAGEN CSS
+========================== */
+.contenedor-img{
+    width: 320px;
+    height: 220px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.4s;
+    opacity: 0.9;
+
+    /* Imagen desde CSS */
+    background-image: url("https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* sombra exterior + inset */
+    box-shadow:
+    inset 0px 0px 25px rgba(0,0,0,0.35),
+    inset 5px 5px 20px rgba(255,255,255,0.2),
+    0px 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Hover elegante */
+.contenedor-img:hover{
+    transform: scale(1.05);
+    opacity: 1;
+
+    box-shadow:
+    inset 0px 0px 35px rgba(0,0,0,0.5),
+    0px 0px 25px rgba(52,152,219,0.5);
+}
+
+/* ==========================
+   TEXT SHADOW + BACKGROUND CLIP
+========================== */
+.texto-clip{
+    font-size: 60px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+
+    /* Degradado gris */
+    background: linear-gradient(
+        to bottom,
+        #f5f5f5,
+        #bdbdbd,
+        #6e6e6e
+    );
+
+    /* clip al texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* sombra gris */
+    text-shadow:
+    3px 3px 8px rgba(128,128,128,0.7);
+
+    transition: 0.4s;
+}
+
+/* Hover elegante */
+.texto-clip:hover{
+    transform: scale(1.06);
+
+    text-shadow:
+    0px 0px 12px rgba(180,180,180,0.8),
+    0px 0px 25px rgba(100,100,100,0.5);
+}
+
+
+/* ==========================
+   FUENTE ELEGANTE GLOBAL
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================
+   FONDO SUAVE + LUZ AZUL
+========================== */
+.login-bg{
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f8fafc;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* luz azul suave detrás */
+.login-bg::before{
+    content: "";
+    position: absolute;
+
+    width: 550px;
+    height: 550px;
+
+    background: radial-gradient(
+        circle,
+        rgba(96,165,250,0.25),
+        transparent 70%
+    );
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    filter: blur(25px);
+
+    z-index: 0;
+}
+
+/* ==========================
+   CAJA LOGIN CON DEGRADADO AZUL
+========================== */
+.login-box{
+    position: relative;
+    z-index: 1;
+
+    width: 360px;
+    padding: 40px;
+
+    border-radius: 22px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(96,165,250,0.25),
+        rgba(59,130,246,0.15),
+        rgba(255,255,255,0.85)
+    );
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(96,165,250,0.35);
+
+    box-shadow:
+    0px 20px 40px rgba(0,0,0,0.10),
+    0px 0px 0px 3px rgba(96,165,250,0.10);
+
+    transition: 0.3s;
+}
+
+.login-box:hover{
+    transform: translateY(-5px);
+}
+
+/* ==========================
+   TITULO ELEGANTE
+========================== */
+.login-title{
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+
+    font-weight: 600;
+
+    color: #1f2937;
+
+    text-shadow:
+    0px 1px 2px rgba(0,0,0,0.15),
+    0px 2px 6px rgba(96,165,250,0.15);
+}
+
+/* ==========================
+   INPUTS SUAVES + SHADOW
+========================== */
+.login-input{
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+
+    border-radius: 14px;
+
+    border: 1px solid #d1d5db;
+
+    background: rgba(255,255,255,0.9);
+
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+
+    transition: 0.3s;
+
+    box-shadow:
+    0px 4px 10px rgba(0,0,0,0.05),
+    inset 0px 2px 6px rgba(0,0,0,0.04);
+}
+
+.login-input:hover{
+    transform: scale(1.02);
+    border-color: #cbd5e1;
+}
+
+.login-input:focus{
+    border-color: #60a5fa;
+
+    box-shadow:
+    0px 0px 0px 3px rgba(96,165,250,0.15),
+    inset 0px 2px 6px rgba(0,0,0,0.05);
+}
+
+/* ==========================
+   CHECKBOX
+========================== */
+.login-check{
+    font-size: 14px;
+    color: #1f2937;
+
+    margin-bottom: 15px;
+}
+
+/* ==========================
+   BOTÓN CURVO AZUL
+========================== */
+.btn2{
+    width: 100%;
+    height: 55px;
+
+    border: none;
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: white;
+
+    background: linear-gradient(to bottom, #60a5fa, #3b82f6);
+
+    border-radius: 0px 30px 0px 30px;
+
+    box-shadow:
+    0px 10px 20px rgba(59,130,246,0.2),
+    inset 0px 2px 6px rgba(255,255,255,0.2);
+
+    transition: 0.2s;
+
+    text-shadow: 0px 1px 2px rgba(0,0,0,0.25);
+}
+
+.btn2:hover{
+    transform: translateY(-4px);
+}
+
+.btn2:active{
+    transform: translateY(4px);
+
+    box-shadow:
+    inset 0px 6px 10px rgba(0,0,0,0.15);
+}
+
+/* ==========================
+   TEXTO FINAL
+========================== */
+.login-text{
+    text-align: center;
+    margin-top: 15px;
+
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.login-text:hover{
+    color: #334155;
+}

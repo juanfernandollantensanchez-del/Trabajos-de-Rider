@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte Registrado</title>
+</head>
+<body>
+    <h1>Reporte Registrado</h1>
+
+    <p>El temblor fue <strong>{{ registro.nombre }}</strong> y la magnitud fue de <strong>{{ registro.magnitud }} Mw</strong>.</p>
+
+    <ul>
+        <li><strong>Profundidad:</strong> {{ registro.profundidad|default:"N/A" }} km</li>
+        <li><strong>Fecha y Hora:</strong> {{ registro.fecha_hora|default:"N/A" }}</li>
+        <li><strong>Nivel de Alerta:</strong> {{ registro.alerta|default:"N/A" }}</li>
+        <li><strong>Observaciones:</strong> {{ registro.observaciones|default:"Sin observaciones" }}</li>
+    </ul>
+
+    <br>
+    <a href="{% url 'temblor' %}">
+        <button type="button">Registrar otro temblor</button>
+    </a>
+
+    <a href="{% url 'lista_temblores' %}">
+        <button type="button">Ver todos los registros</button>
+    </a>
+</body>
+</html>

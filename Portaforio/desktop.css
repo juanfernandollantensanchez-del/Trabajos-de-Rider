@@ -1,0 +1,13 @@
+/* Este código viene dentro de la capa 'escritorio' gracias al @import */
+body {
+    background-color: #FFFB75; /* Fondo amarillo pastel elegante */
+}
+
+.menu-superior {
+    background-color: #7C3AED; /* Menú morado */
+}
+
+.tarjeta-proyecto {
+    transform: scale(1.05); /* Agranda un poco las tarjetas */
+    box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.3); /* Sombra morada */
+}

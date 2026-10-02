@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo de Float y Clear</title>
+    <style>
+        /* Estilos generales para que se vea bonito */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .contenedor {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Cajas que van a flotar */
+        .caja {
+            width: 150px;
+            height: 100px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 10px;
+            border-radius: 4px;
+        }
+
+        /* 1. FLOAT A LA IZQUIERDA */
+        .flotar-izquierda {
+            float: left;
+            background-color: #3498db; /* Azul */
+        }
+
+        /* 2. FLOAT A LA DERECHA */
+        .flotar-derecha {
+            float: right;
+            background-color: #e74c3c; /* Rojo */
+        }
+
+        /* 3. PROPIEDADES CLEAR */
+        .limpiar-izquierda {
+            clear: left;
+            background-color: #2ecc71; /* Verde */
+            padding: 10px;
+            margin-top: 15px;
+        }
+
+        .limpiar-derecha {
+            clear: right;
+            background-color: #9b59b6; /* Morado */
+            padding: 10px;
+            margin-top: 15px;
+        }
+
+        .limpiar-ambos {
+            clear: both;
+            background-color: #f39c12; /* Naranja */
+            padding: 15px;
+            margin-top: 20px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h1>Demostración de Float y Clear</h1>
+    <p>El texto normal de un párrafo fluye de arriba hacia abajo, pero cuando usamos floats, los elementos se alinean a los lados y el texto los rodea.</p>
+
+    <hr>
+
+    <h2>1. Float Izquierda (Float: left)</h2>
+    <div class="caja flotar-izquierda">Soy Izquierda</div>
+    <p>Este texto está escrito después de la caja azul. Como la caja tiene <code>float: left</code>, se mueve hacia la izquierda y permite que este párrafo suba y se acomode a su lado derecho, envolviéndola por completo. Si el texto es muy largo, seguirá fluyendo por debajo de la caja una vez que la supere.</p>
+
+    <div class="limpiar-izquierda">
+        <strong>Bloque con Clear Left:</strong> Este elemento usa <code>clear: left</code>. Esto significa que "no tolera" elementos flotantes a su izquierda. Obliga a este bloque verde a bajarse y colocarse completamente debajo de la caja azul.
+    </div>
+
+    <hr>
+
+    <h2>2. Float Derecha (Float: right)</h2>
+    <div class="caja flotar-derecha">Soy Derecha</div>
+    <p>Ahora tenemos una caja roja con <code>float: right</code>. La caja se pega al extremo derecho del contenedor. El texto de este párrafo se alinea a la izquierda de la caja roja y la rodea de forma natural. Es el clásico diseño que se usa para imágenes en artículos de noticias.</p>
+
+    <div class="limpiar-derecha">
+        <strong>Bloque con Clear Right:</strong> Este elemento morado usa <code>clear: right</code>. No permite elementos flotantes a su derecha, por lo que espera a que la caja roja termine para poder mostrarse.
+    </div>
+
+    <hr>
+
+    <h2>3. Ambos flotando a la vez y Clear Both</h2>
+    <div class="caja flotar-izquierda">Izq otra vez</div>
+    <div class="caja flotar-derecha">Der otra vez</div>
+    <p>Aquí hay una caja azul a la izquierda y una roja a la derecha al mismo tiempo. El texto se queda atrapado en el centro, rellenando el espacio que queda entre ambas.</p>
+
+    <div class="limpiar-ambos">
+        ¡Clear Both! Este bloque naranja limpia tanto la izquierda como la derecha. Se asegura de empezar completamente limpio debajo de cualquier float que exista antes que él.
+    </div>
+</div>
+
+</body>
+</html>
